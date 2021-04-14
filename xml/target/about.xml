@@ -1,0 +1,207 @@
+<!-- Edit the answers below to describe your dataset -->
+<!-- Do not change questions as these are defined by the MAIDS specification -->
+<root name="ABOUT">
+    <title>
+        <question>What is the title of your dataset?</question>
+        <answer>CLL-TIM</answer>
+    </title>
+    <repository>
+        <question>What is the URL of the repository for this MAIDS description on Github?</question>
+        <answer>https://github.com/UltrathonOnline/MAIDS.U21-06.CLLTIM</answer>
+    </repository>
+    <authors>
+        <question>Who are the dataset's authors?</question>
+        <answer>
+            <author_1>
+                <!-- Primary contact that must always be specified -->
+                <firstnames>Carsten Utoft</firstnames>
+                <lastname>Niemann</lastname>
+                <email>carsten.utoft.niemann@regionh.dk</email>
+            </author_1>
+            <author_2>
+                <firstnames>rudi</firstnames>
+                <lastname>agius</lastname>
+                <email>rudi.agius@regionh.dk</email>                
+            </author_2>
+        </answer>
+    </authors>
+    <scores>
+        <document>
+            <score>
+                <question>What is the document score, as defined by MAIDS?</question>
+                <answer>1</answer>
+            </score>
+            <comment>
+                <question>Why was this score given? Provide a full justification.</question>
+                <answer></answer>
+            </comment>
+            <evaluator>
+                <entityType>
+                    <question>What gave the score? [algorithm / group / committee / person]</question>
+                    <answer></answer>
+                </entityType>
+                <entityName>
+                    <question>Name of algorithm / group / committee / person who gave the score?</question>
+                    <answer></answer>
+                </entityName>
+                <contactName>
+                    <question>Who should be contacted to query the score?</question>
+                    <answer></answer>
+                </contactName>
+                <contactEmail>
+                    <question>What is the contact person's email address?</question>
+                    <answer></answer>
+                </contactEmail>
+            </evaluator>
+        </document>
+        <fairness>
+            <score>
+                <question>What is the fairness score given, as defined by MAIDS?</question>
+                <answer>?</answer>
+            </score>
+            <comment>
+                <question>Why was this score given? Provide a full justification.</question>
+                <answer></answer>
+            </comment>
+            <evaluator>
+                <entityType>
+                    <question>What gave the score? [algorithm / group / committee / person]</question>
+                    <answer></answer>
+                </entityType>
+                <entityName>
+                    <question>Name of algorithm / group / committee / person who gave the score?</question>
+                    <answer></answer>
+                </entityName>
+                <contactName>
+                    <question>Who should be contacted to query the score?</question>
+                    <answer></answer>
+                </contactName>
+                <contactEmail>
+                    <question>What is the contact person's email address?</question>
+                    <answer></answer>
+                </contactEmail>
+            </evaluator>
+        </fairness>
+        <magnitude>
+            <score>
+                <question>What is the magnitude score given, as defined by MAIDS?</question>
+                <answer>3</answer>
+            </score>
+            <comment>
+                <question>Why was this score given? Provide a full justification.</question>
+                <answer></answer>
+            </comment>
+            <evaluator>
+                <entityType>
+                    <question>What gave the score? [algorithm / group / committee / person]</question>
+                    <answer></answer>
+                </entityType>
+                <entityName>
+                    <question>Name of algorithm / group / committee / person who gave the score?</question>
+                    <answer></answer>
+                </entityName>
+                <contactName>
+                    <question>Who should be contacted to query the score?</question>
+                    <answer></answer>
+                </contactName>
+                <contactEmail>
+                    <question>What is the contact person's email address?</question>
+                    <answer></answer>
+                </contactEmail>
+            </evaluator>
+        </magnitude>
+        <synthetic>
+            <score>
+                <question>What is the synthetic score given, as defined by MAIDS?</question>
+                <answer>E</answer>
+            </score>
+            <comment>
+                <question>Why was this score given? Provide a full justification.</question>
+                <answer></answer>
+            </comment>
+            <evaluator>
+                <entityType>
+                    <question>What gave the score? [algorithm / group / committee / person]</question>
+                    <answer></answer>
+                </entityType>
+                <entityName>
+                    <question>Name of algorithm / group / committee / person who gave the score?</question>
+                    <answer></answer>
+                </entityName>
+                <contactName>
+                    <question>Who should be contacted to query the score?</question>
+                    <answer></answer>
+                </contactName>
+                <contactEmail>
+                    <question>What is the contact person's email address?</question>
+                    <answer></answer>
+                </contactEmail>
+            </evaluator>
+        </synthetic>
+    </scores>
+    <thematic>
+        <filename>thematic.jpg</filename>
+    </thematic>
+    <abstract>
+        <question>Please provide a brief abstract describing this dataset.</question>
+        <answer>Infections are the leading cause of mortality in CLL. Risk of Infection is increased upon CLL treatment and currently we have no model that is able to predict risk of infection upon CLL treatment. The dataset created puts together various sources of time-series electronic health records on CLL patients in Denmark. This also includes outcome on death, treatment and infection. Using this data set we aim to both model risk of infection upon CLL treatment and uncover risk factors responsible for low immune function and duration of treatment response upon different treatment regimens.</answer>
+    </abstract>
+    <usecases>
+        <question>Please provide one or more short use cases to highlight what this dataset might be used for. These should summarise the main and secondary research questions into single sentence objectives. You may also use this section to expand on possible uses not discussed in the research questions.</question>
+        <answer>
+            <usecase_1 />
+        </answer>
+    </usecases>
+    <research>
+        <main>
+            <question>Please state, in detail, the main hypothesis for which this dataset was created.</question>
+            <answer>Predict risk of infection (blood culture drawn) and chance of treatment free survival 4 years from start of first CLL treatment.</answer>
+        </main>
+        <secondary>
+            <question>Please state, in detail, any other hypotheses which this dataset would be able to address.</question>
+            <answer>Group patients according to phenotype (unsupervised clustering) and detect outcomes correlated with these groups. Develop meta learning approaches to adapt and validate these findings to other diseases/cohorts.</answer>
+        </secondary>
+    </research>
+    <figures>
+        <question>Please entitle and provide a legend for each figure found in "./images/figures/".</question>
+        <answer></answer>
+    </figures>
+    <subsetAssociations>
+        <filename>subset.jpg</filename>
+        <legend>
+            <question>What is the legend for the figure describing how subsets are associated to one another?</question>
+            <answer>Eight subsets related by pseudonymized patient identifiers.</answer>
+        </legend>
+    </subsetAssociations>
+    <populationSelection>
+        <rootNode>
+            <nodeid>0</nodeid> <!-- Do not change. Use nodeids as reference points. -->
+            <name />
+            <description />
+            <sources>
+                <!-- INSERT TEMPLATE SOURCES HERE  -->
+            </sources>
+        </rootNode>
+        <!-- INSERT TEMPLATE NODES HERE AND REFERENCE THEIR PARENTS -->
+    </populationSelection>
+</root>
+
+<!-- NODE TEMPLATES FOR DEFINING THE POPULATION SELECTION GRAPH 
+<node>
+    <nodeid />
+    <name />
+    <description />
+    <location />
+</node>
+
+<source>
+    <entityName />
+    <entityAddress />
+    <contactPerson />
+    <contactEmail />
+    <dataDescription />
+    <instancesContributed />
+    <beginDateCollection />
+    <endDateCollection />
+</source>
+-->
