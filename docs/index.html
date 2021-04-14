@@ -1,2159 +1,335 @@
 <!DOCTYPE html>
 <html>
+ <head>
+  <title>
+   Medical AI Datasheet (MAIDS)
+  </title>
+  <meta charset="utf-8"/>
+  <meta content="IE=EDGE" http-equiv="X-UA-Compatible"/>
+  <meta content="width=device-width, initial-scale=1" name="viewport"/>
+  <link href="./css/style.css" rel="stylesheet"/>
+  <link href="./css/help.css" rel="stylesheet"/>
+  <link href="./css/lightbox.css" rel="stylesheet"/>
+  <link href="./css/slick.css" rel="stylesheet"/>
+  <link href="./css/dt.css" rel="stylesheet"/>
+  <script src="./js/social.js">
+  </script>
+  <script src="./js/lightbox-plus-jquery.js">
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js">
+  </script>
+  <script src="./js/hbhelpers.js">
+  </script>
+  <script src="./js/hbmaids.js">
+  </script>
+  <script src="./js/slick.js">
+  </script>
+  <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js">
+  </script>
+  <script src="./js/dt.js">
+  </script>
+ </head>
+ <body>
+  <div id="emptyHandle">
+  </div>
+  <script type="text/javascript">
+   var template = Handlebars.templates['maids']
 
-<head>
-    <title>
-        Medical AI Datasheet (MAIDS)
-    </title>
-    <meta charset="utf-8" />
-    <meta content="IE=EDGE" http-equiv="X-UA-Compatible" />
-    <meta content="width=device-width, initial-scale=1" name="viewport" />
-    <link href="./css/style.css" rel="stylesheet" />
-    <link href="./css/help.css" rel="stylesheet" />
-    <link href="./css/lightbox.css" rel="stylesheet" />
-    <link href="./css/slick.css" rel="stylesheet" />
-    <link href="./css/dt.css" rel="stylesheet" />
-    <script src="./js/social.js">
-    </script>
-    <script src="./js/lightbox-plus-jquery.js">
-    </script>
-    <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js">
-    </script>
-    <script src="./js/hbhelpers.js">
-    </script>
-    <script src="./js/hbmaids.js">
-    </script>
-    <script src="./js/slick.js">
-    </script>
-    <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js">
-    </script>
-    <script src="./js/dt.js">
-    </script>
-</head>
-
-<body>
-    <div id="emptyHandle">
-    </div>
-    <script type="text/javascript">
-        var template = Handlebars.templates['maids']
-
-        var filledHandle = template({
-            title: "CLL-TIM",
-            repository: "https://github.com/UltrathonOnline/MAIDS.U21-06.CLLTIM",
-            authors: [{
-                author: {
-                    firstnames: "Carsten Utoft",
-                    lastname: "Niemann",
-                    email: "carsten.utoft.niemann@regionh.dk",
-                },
-            }, {
-                author: {
-                    firstnames: "rudi",
-                    lastname: "agius",
-                    email: "rudi.agius@regionh.dk",
-                },
-            }, ],
-            scores: {
-                document: {
-                    score: "1",
-                    comment: "None",
-                    evaluator: {
-                        entityType: "None",
-                        entityName: "None",
-                        contactName: "None",
-                        contactEmail: "None",
-                    },
-                },
-                fairness: {
-                    score: "?",
-                    comment: "None",
-                    evaluator: {
-                        entityType: "None",
-                        entityName: "None",
-                        contactName: "None",
-                        contactEmail: "None",
-                    },
-                },
-                magnitude: {
-                    score: "3",
-                    comment: "None",
-                    evaluator: {
-                        entityType: "None",
-                        entityName: "None",
-                        contactName: "None",
-                        contactEmail: "None",
-                    },
-                },
-                synthetic: {
-                    score: "E",
-                    comment: "None",
-                    evaluator: {
-                        entityType: "None",
-                        entityName: "None",
-                        contactName: "None",
-                        contactEmail: "None",
-                    },
-                },
-            },
-            thematic: {
-                filename: "thematic.jpg",
-            },
-            abstract: "Infections are the leading cause of mortality in CLL. Risk of Infection is increased upon CLL treatment and currently we have no model that is able to predict risk of infection upon CLL treatment. The dataset created puts together various sources of time-series electronic health records on CLL patients in Denmark. This also includes outcome on death, treatment and infection. Using this data set we aim to both model risk of infection upon CLL treatment and uncover risk factors responsible for low immune function and duration of treatment response upon different treatment regimens.",
-            usecases: [{
-                usecase: "None",
-            }, ],
-            research: {
-                main: "Predict risk of infection (blood culture drawn) and chance of treatment free survival 4 years from start of first CLL treatment.",
-                secondary: "Group patients according to phenotype (unsupervised clustering) and detect outcomes correlated with these groups. Develop meta learning approaches to adapt and validate these findings to other diseases/cohorts."
-            },
-            figures: [],
-            subsetAssociations: {
-                filename: "subset.jpg",
-                legend: "Eight subsets related by pseudonymized patient identifiers.",
-            },
-            version: {
-                scores: "1",
-                description: "1",
-                questionnaire: "1",
-                subsets: "1",
-                synthetic: "1",
-            },
-            provenance: {
-                template: {
-                    commit: "70198f",
-                    tag: "v0.2-alpha",
-                },
-                specification: {
-                    commit: "758194",
-                    tag: "v0.1-alpha",
-                },
-            },
-            categories: [{
-                category: {
-                    id: "1",
-                    name: "Motivation",
-                    code: "M",
-                    description: "The questions in this category are primarily intended to encourage dataset creators to clearly articulate their reasons for creating the dataset and to promote transparency about funding interests.",
-                    entries: [{
-                        entry: {
-                            id: "1",
-                            answer: "Infections are the leading cause of mortality in CLL. Risk of Infection is increased upon CLL treatment and currently we have no model that is able to predict risk of infection upon CLL treatment. The dataset created puts together various sources of time-series electronic health records on CLL patients in Denmark. This also includes outcome on death, treatment and infection. Using this data set we aim to both model risk of infection upon CLL treatment and uncover risk factors responsible for low immune function and duration of treatment response upon different treatment regimens ",
-                            by: "",
-                            on: "",
-                            question: "For what purpose was the dataset created?",
-                            help: "Was there a specific task in mind? Was there a specific gap that needed to be filled? Please provide a description."
-                        }
-                    }, {
-                        entry: {
-                            id: "2",
-                            answer: "Dataset was created by the CLL Laboratory at Rigshospitalet, Copenhagen University Hospital using data from the national CLL registry and PERSIMUNE data warehouse.",
-                            by: "",
-                            on: "",
-                            question: "Who created the dataset (e.g., which team, research group) and on behalf of which entity (e.g., company, institution, organization)?",
-                            help: "None"
-                        }
-                    }, {
-                        entry: {
-                            id: "3",
-                            answer: "Novo Nordisk Foundation (grant NNF16OC0019302) and Danish Cancer Society",
-                            by: "",
-                            on: "",
-                            question: "Who funded the creation of the dataset?",
-                            help: "If there is an associated grant, please provide the name of the grantor and the grant name and number."
-                        }
-                    }, {
-                        entry: {
-                            id: "4",
-                            answer: "None",
-                            by: "",
-                            on: "",
-                            question: "Any other comments?",
-                            help: "None"
-                        }
-                    }, ]
-                }
-            }, {
-                category: {
-                    id: "2",
-                    name: "Composition",
-                    code: "C",
-                    description: "Most of these questions are intended to provide dataset consumers with the information they need to make informed decisions about using the dataset for specific tasks. The answers to some of these questions reveal information about compliance with the EU’s General Data Protection Regulation (GDPR) or comparable regulations in other jurisdictions.",
-                    entries: [{
-                        entry: {
-                            id: "1",
-                            answer: "Dataset represents electronic health record data from various data sources collected on CLL Patients in Denmark. Baseline: Each instance is a single CLL patient and their set of CLL prognostic factor variables taken around time of CLL diagnosis CLL Registry: Each instance is a single CLL patient and extracted from the National CLL Registry that contains information on several clinically relevant outcome like treatment and death. Treatment Outcome data contains information on line of CLL treatment and type of CLL treatment. Each instance is a line of treatment – hence multiple instances for patients with multiple lines of treatment. For the following each instance is one patient event – hence multiple instances for patients with multiple events – where events are a diagnosis, pathology, laboratory test, prescription, lab culture. Diagnosis: Historical data on previous patient diagnosis - not necessarily those related to CLL. Laboratory: Laboratory tests – not necessarily related to CLL. Pathology: Historical data on previous patient pathology - not necessarily related to CLL. Laboratory Cultures: data for different type of cultures taken for a given patient – thereby holding information on CLL related infections. Medications: Historical data on prescribed medications - not necessarily related to CLL",
-                            by: "",
-                            on: "",
-                            question: "What do the instances that comprise the dataset represent (e.g., samples, images, people)?",
-                            help: "Are there multiple types of instances (e.g., samples, images, and people), interactions (e.g., nodes and edges), resolutions (e.g., genetic data, single cell expression vs. tissue expression, cell counts, different image technologies, etc.)? Please provide a description."
-                        }
-                    }, {
-                        entry: {
-                            id: "2",
-                            answer: "Baseline: 4999 (each instance is a unique patient); CLL Registry:4999 (each instance is a unique patient); Treatment Outcome:1996 (No, or multiple instances for each patient possible); Diagnosis:147197 (No, or multiple instances for each patient possible); Laboratory:4226248 (No, or multiple instances for each patient possible); Pathology:199337 (No, or multiple instances for each patient possible); Laboratory Cultures:84299 (No, or multiple instances for each patient possible); Medications:1098273 (No, or multiple instances for each patient possible)",
-                            by: "",
-                            on: "",
-                            question: "How many instances are there in total?",
-                            help: "Provide an exact integer value for each type mentioned in question C1."
-                        }
-                    }, {
-                        entry: {
-                            id: "3",
-                            answer: "CLL Registry contains data on all CLL patient in Denmark. Remaining datasets have missingness both at random and not at random.",
-                            by: "",
-                            on: "",
-                            question: "Does the dataset contain all possible instances or is it a sample (not necessarily random) of instances from a larger set?",
-                            help: "f the dataset is a sample, then what is the larger set? Is the sample representative of the larger set (e.g., geographic coverage)? If so, please describe how this representativeness was validated/verified. If it is not representative of the larger set, please describe why not (e.g., an active decision to cover a more diverse range of instances, because instances were withheld or unavailable)."
-                        }
-                    }, {
-                        entry: {
-                            id: "4",
-                            answer: "Each data instance is an instance of a patient record – hence raw data. A single patient is therefore spread across several instances in different datasets.  For example, a particular laboratory test, or a single prescription of a medication, will hold an instance each. Features must then be derived from these raw data to generate just a single-row for each patient as is typical in a machine learning dataset.",
-                            by: "",
-                            on: "",
-                            question: "What data does each instance consist of?",
-                            help: "“Raw” data (e.g., unprocessed text or images) or features? In either case, please provide a description."
-                        }
-                    }, {
-                        entry: {
-                            id: "5",
-                            answer: "No, as each instance is raw data. Outcomes may be derived from CLL Registry, Treatment Outcome, and Laboratory Cultures datasets.",
-                            by: "",
-                            on: "",
-                            question: "Is there a label, target, or outcome (e.g., mortality) associated with each instance?",
-                            help: "If so, please provide a description and indicate its actual presence within the dataset or whether it is represented by a proxy or compounded (e.g., a multi-cause event)."
-                        }
-                    }, {
-                        entry: {
-                            id: "6",
-                            answer: "No information has been redacted. Missing information can be missing at random and not at random.",
-                            by: "",
-                            on: "",
-                            question: "Is any information missing from individual instances?",
-                            help: "If so, please provide a description, explaining why this information is missing (e.g., because it was unavailable). This does not include intentionally removed information, but might include, e.g., redacted text."
-                        }
-                    }, {
-                        entry: {
-                            id: "7",
-                            answer: "Yes. The patient id links different instances in a given dataset to a single patient, and similarly instances from other datasets related to the same patient.",
-                            by: "",
-                            on: "",
-                            question: "Are relationships between individual instances made explicit (e.g., familial links, or samples derived from the same patient or same exposure)?",
-                            help: "If so, please describe how these relationships are made explicit."
-                        }
-                    }, {
-                        entry: {
-                            id: "8",
-                            answer: "No",
-                            by: "",
-                            on: "",
-                            question: "Are there recommended data splits (e.g., training, development/validation, testing)?",
-                            help: "If so, please provide a description of these splits, explaining the rationale behind them."
-                        }
-                    }, {
-                        entry: {
-                            id: "9",
-                            answer: "Yes. There are potential duplicates and some of the dates and times may also have errors. Errors may also be present in laboratory values.",
-                            by: "",
-                            on: "",
-                            question: "Are there any errors, sources of noise, or redundancies in the dataset?",
-                            help: "If so, please provide a description."
-                        }
-                    }, {
-                        entry: {
-                            id: "10",
-                            answer: "Yes. Datasets is extracted from the National CLL registry and PERSIMUNE data warehouse and continuously updated.",
-                            by: "",
-                            on: "",
-                            question: "Is the dataset self-contained, or does it link to or otherwise rely on external resources (e.g., websites, public databases, other datasets and/or private silos)?",
-                            help: "If it links to or relies on external resources, a) are there guarantees that they will exist, and remain constant, over time; b) are there official archival versions of the complete dataset (i.e., including the external resources as they existed at the time the dataset was created); c) are there any restrictions (e.g., licenses, fees) associated with any of the external resources that might apply to a future user? Please provide descriptions of all external resources and any restrictions associated with them, as well as links or other access points, as appropriate."
-                        }
-                    }, {
-                        entry: {
-                            id: "11",
-                            answer: "Yes",
-                            by: "",
-                            on: "",
-                            question: "Does the dataset contain data that might be considered confidential (e.g., data that is protected by legal privilege or by doctor-patient confidentiality, data that includes the content of individuals’ non-public communications)?",
-                            help: "If so, please provide a description."
-                        }
-                    }, {
-                        entry: {
-                            id: "12",
-                            answer: "No",
-                            by: "",
-                            on: "",
-                            question: "Does the dataset contain data that, if viewed directly, might be offensive, insulting, threatening, or might otherwise cause anxiety?",
-                            help: "If so, please describe why."
-                        }
-                    }, {
-                        entry: {
-                            id: "13",
-                            answer: "DIRECT RELATION TO PEOPLE",
-                            by: "",
-                            on: "",
-                            question: "Does the dataset not relate to people (e.g., animals, cell lines, environment)?",
-                            help: "A short answer is sufficient. If no relation to people, you may skip the remaining questions in this section."
-                        }
-                    }, {
-                        entry: {
-                            id: "14",
-                            answer: "Age and gender are available and hence any information may be stratified according to these variables",
-                            by: "",
-                            on: "",
-                            question: "Does the dataset identify any subpopulations (e.g., by age, gender, etc.)?",
-                            help: "If so, please describe how these subpopulations are identified and provide a description of their respective distributions within the dataset."
-                        }
-                    }, {
-                        entry: {
-                            id: "15",
-                            answer: "Patient IDs are pseudonymized in all datasets. It is potentially possible to identify individuals indirectly in combination with other data.",
-                            by: "",
-                            on: "",
-                            question: "Is it possible to identify individuals (i.e., one or more natural persons), either directly or indirectly (i.e., in combination with other data) from the dataset?",
-                            help: "If so, please describe how."
-                        }
-                    }, {
-                        entry: {
-                            id: "16",
-                            answer: "No",
-                            by: "",
-                            on: "",
-                            question: "Does the dataset contain data that might be considered sensitive in any way (e.g., data that reveals racial or ethnic origins, sexual orientations, religious beliefs, political opinions or union memberships, or locations; financial or health data; biometric or genetic data; forms of government identification, such as social security numbers; criminal history)?",
-                            help: "If so, please provide a description."
-                        }
-                    }, {
-                        entry: {
-                            id: "17",
-                            answer: "None",
-                            by: "",
-                            on: "",
-                            question: "Any other comments?",
-                            help: "None"
-                        }
-                    }, ]
-                }
-            }, {
-                category: {
-                    id: "3",
-                    name: "Collection Process",
-                    code: "L",
-                    description: "If possible, dataset creators should read through these questions prior to any data collection to flag potential issues and then provide answers once collection is complete. In addition to the goals of the prior category, the answers to questions here may provide information that allow others to reconstruct the dataset without access to it.",
-                    entries: [{
-                        entry: {
-                            id: "1",
-                            answer: "None",
-                            by: "",
-                            on: "",
-                            question: "How was the data associated with each instance acquired?",
-                            help: "Was the data directly observable (e.g., raw text, instrument measurements), reported by subjects/physicians (e.g., survey responses), or indirectly inferred/derived from other data (e.g., part-of-speech tags, model-based guesses, scores, etc.)? If data was reported by subjects or indirectly inferred/derived from other data, was the data validated/verified? If so, please describe how."
-                        }
-                    }, {
-                        entry: {
-                            id: "2",
-                            answer: "None",
-                            by: "",
-                            on: "",
-                            question: "What mechanisms or procedures were used to collect the data (e.g., hardware apparatus or sensor, manual human curation, software program, software API)?",
-                            help: "How were these mechanisms or procedures validated?"
-                        }
-                    }, {
-                        entry: {
-                            id: "3",
-                            answer: "None",
-                            by: "",
-                            on: "",
-                            question: "If the dataset is a sample from a larger set, what was the sampling strategy (e.g., deterministic, probabilistic with specific sampling probabilities)?",
-                            help: "Please describe."
-                        }
-                    }, {
-                        entry: {
-                            id: "4",
-                            answer: "None",
-                            by: "",
-                            on: "",
-                            question: " Who was involved in the data collection process (e.g., students, crowdworkers, contractors) and how were they compensated (e.g., salaried, immaterial through prizes / authorship / etc) and how much (e.g., according to competitive scales mandated by [insert body or institution])?",
-                            help: "None"
-                        }
-                    }, {
-                        entry: {
-                            id: "5",
-                            answer: "None",
-                            by: "",
-                            on: "",
-                            question: "Over what timeframe was the data collected?",
-                            help: "Does this timeframe match the creation timeframe of the data associated with the instances (e.g., recent data from old biobanked samples, or recent data dump from a 5-year-old registry)? If not, please describe the time frame in which the data associated with the instances was created."
-                        }
-                    }, {
-                        entry: {
-                            id: "6",
-                            answer: "None",
-                            by: "",
-                            on: "",
-                            question: "Were any ethical review processes conducted (e.g., by an institutional review board)?",
-                            help: "If so, please provide a description of these review processes, including the outcomes, as well as a link or other access point to any supporting documentation."
-                        }
-                    }, {
-                        entry: {
-                            id: "7",
-                            answer: "None",
-                            by: "",
-                            on: "",
-                            question: "Does the dataset not relate to people (e.g., animals, cell lines, environment)?",
-                            help: "A short answer is sufficient. If no relation to people, you may skip the remaining questions in this section."
-                        }
-                    }, {
-                        entry: {
-                            id: "8",
-                            answer: "None",
-                            by: "",
-                            on: "",
-                            question: "Did you collect the data from the individuals in question directly, or obtain it via third parties or other sources (e.g., websites)?",
-                            help: "Please explain."
-                        }
-                    }, {
-                        entry: {
-                            id: "9",
-                            answer: "None",
-                            by: "",
-                            on: "",
-                            question: "Were the individuals in question notified about the data collection?",
-                            help: "If so, please describe (or show with screenshots or other information) how notice was provided, and provide a link or other access point to, or otherwise reproduce, the exact language of the notification itself."
-                        }
-                    }, {
-                        entry: {
-                            id: "10",
-                            answer: "None",
-                            by: "",
-                            on: "",
-                            question: "Did the individuals in question consent to the collection and use of their data?",
-                            help: "If so, please describe (or show with screenshots or other information) how consent was requested and provided, and provide a link or other access point to, or otherwise reproduce, the exact language to which the individuals consented."
-                        }
-                    }, {
-                        entry: {
-                            id: "11",
-                            answer: "None",
-                            by: "",
-                            on: "",
-                            question: " If consent was obtained, were the consenting individuals provided with a mechanism to revoke their consent in the future or for certain uses?",
-                            help: "If so, please provide a description, as well as a link or other access point to the mechanism (if appropriate)."
-                        }
-                    }, {
-                        entry: {
-                            id: "12",
-                            answer: "None",
-                            by: "",
-                            on: "",
-                            question: "Has an analysis of the potential impact of the dataset and its use on data subjects (e.g., a data protection impact analysis) been conducted?",
-                            help: "If so, please provide a description of this analysis, including the outcomes, as well as a link or other access point to any supporting documentation."
-                        }
-                    }, {
-                        entry: {
-                            id: "13",
-                            answer: "None",
-                            by: "",
-                            on: "",
-                            question: "Any other comments?",
-                            help: "None"
-                        }
-                    }, ]
-                }
-            }, {
-                category: {
-                    id: "4",
-                    name: "Preprocessing, Cleaning, Labling",
-                    code: "P",
-                    description: "If possible, dataset creators should read through these questions prior to any preprocessing, cleaning, or labeling and then provide answers once these tasks are complete. The questions in this category are intended to provide dataset consumers with the information they need to determine whether the “raw” data has been processed in ways that are compatible with their chosen tasks.",
-                    entries: [{
-                        entry: {
-                            id: "1",
-                            answer: "None",
-                            by: "",
-                            on: "",
-                            question: "Was any preprocessing/cleaning/labeling of the data done (e.g., discretization or bucketing, tokenization, part-of-speech tagging, SIFT feature extraction, removal of instances, processing of missing values)?",
-                            help: "If so, please provide a description. If not, you may skip the remainder of the questions in this section."
-                        }
-                    }, {
-                        entry: {
-                            id: "2",
-                            answer: "None",
-                            by: "",
-                            on: "",
-                            question: "Was the “raw” data saved in addition to the preprocessed/cleaned/labeled data (e.g., to support unanticipated future uses)?",
-                            help: "If so, is it available and needs to be done to gain access? If open without restriction then please describe a means to access this “raw” data."
-                        }
-                    }, {
-                        entry: {
-                            id: "3",
-                            answer: "None",
-                            by: "",
-                            on: "",
-                            question: "Is the software used to preprocess/clean/label the instances available?",
-                            help: "If so, please provide a link or other access point and describe with enough detail so that others might reproduce it. If a custom script was used will you include it within the MAIDS repository or otherwise make it available?"
-                        }
-                    }, {
-                        entry: {
-                            id: "4",
-                            answer: "None",
-                            by: "",
-                            on: "",
-                            question: "Any other comments?",
-                            help: "None"
-                        }
-                    }, ]
-                }
-            }, {
-                category: {
-                    id: "5",
-                    name: "Uses",
-                    code: "U",
-                    description: "These questions are intended to encourage dataset creators to reflect on the tasks for which the dataset should and should not be used. By explicitly highlighting these tasks, dataset creators can help dataset consumers to make informed decisions, thereby avoiding potential risks or harm.",
-                    entries: [{
-                        entry: {
-                            id: "1",
-                            answer: "None",
-                            by: "",
-                            on: "",
-                            question: "Has the dataset been used for any tasks already?",
-                            help: "hers determine the value of this dataset by example."
-                        }
-                    }, {
-                        entry: {
-                            id: "2",
-                            answer: "None",
-                            by: "",
-                            on: "",
-                            question: "Is there a repository that links to any or all papers or systems that use the dataset?",
-                            help: "If so, please provide a link or other access point. Will you compile such a list and make it available in the MAIDS repository?"
-                        }
-                    }, {
-                        entry: {
-                            id: "3",
-                            answer: "None",
-                            by: "",
-                            on: "",
-                            question: "What (other) tasks could the dataset be used for?",
-                            help: "Please provide as much inspiration as you can. Distinguish between tasks the dataset is ideal for versus those tasks where the dataset is not entirely suited. Describe why the dataset might not be suitable "
-                        }
-                    }, {
-                        entry: {
-                            id: "4",
-                            answer: "None",
-                            by: "",
-                            on: "",
-                            question: "Is there anything about the composition of the dataset or the way it was collected and preprocessed/cleaned/labeled that might impact future uses?",
-                            help: "For example, is there anything that a future user might need to know to avoid uses that could result in unfair treatment of individuals or groups (e.g., stereotyping, quality of service issues) or other undesirable harms (e.g., financial harms, legal risks) If so, please provide a description. Is there anything a future user could do to mitigate these undesirable harms?"
-                        }
-                    }, {
-                        entry: {
-                            id: "5",
-                            answer: "None",
-                            by: "",
-                            on: "",
-                            question: "Are there tasks for which the dataset should not be used?",
-                            help: "If so, please provide a description."
-                        }
-                    }, {
-                        entry: {
-                            id: "6",
-                            answer: "None",
-                            by: "",
-                            on: "",
-                            question: "Any other comments?",
-                            help: "None"
-                        }
-                    }, ]
-                }
-            }, {
-                category: {
-                    id: "6",
-                    name: "Distribution",
-                    code: "D",
-                    description: "Dataset creators should provide answers to these questions prior to distributing the dataset either internally within the entity on behalf of which the dataset was created or externally to third parties.",
-                    entries: [{
-                        entry: {
-                            id: "1",
-                            answer: "None",
-                            by: "",
-                            on: "",
-                            question: "Will the dataset be distributed to third parties outside of the entity (e.g., company, institution, organization) on behalf of which the dataset was created",
-                            help: "If so, please provide a description. If not, then disregard the rest of the questions."
-                        }
-                    }, {
-                        entry: {
-                            id: "2",
-                            answer: "None",
-                            by: "",
-                            on: "",
-                            question: "How will the dataset be distributed (e.g., tarball on website, API, GitHub)?",
-                            help: "Does the dataset have a digital object identifier (DOI)?"
-                        }
-                    }, {
-                        entry: {
-                            id: "3",
-                            answer: "None",
-                            by: "",
-                            on: "",
-                            question: "When will the dataset be distributed?",
-                            help: "A cautious response is more useful than an optimistic one."
-                        }
-                    }, {
-                        entry: {
-                            id: "4",
-                            answer: "None",
-                            by: "",
-                            on: "",
-                            question: "Will the dataset be distributed under a copyright or other intellectual property (IP) license, and/or under applicable terms of use (ToU)?",
-                            help: "If so, please describe this license and/or ToU, and provide a link or other access point to, or otherwise reproduce, any relevant licensing terms or ToU, as well as any fees associated with these restrictions."
-                        }
-                    }, {
-                        entry: {
-                            id: "5",
-                            answer: "None",
-                            by: "",
-                            on: "",
-                            question: "Have any third-parties imposed IP-based or other restrictions on the data associated with the instances?",
-                            help: "If so, please describe these restrictions, and provide a link or other access point to, or otherwise reproduce, any relevant licensing terms, as well as any fees associated with these restrictions."
-                        }
-                    }, {
-                        entry: {
-                            id: "6",
-                            answer: "None",
-                            by: "",
-                            on: "",
-                            question: "Do any export controls or other regulatory restrictions apply to the dataset or to individual instances?",
-                            help: "If so, please describe these restrictions, and provide a link or other access point to, or otherwise reproduce, any supporting documentation."
-                        }
-                    }, {
-                        entry: {
-                            id: "7",
-                            answer: "None",
-                            by: "",
-                            on: "",
-                            question: "Any other comments?",
-                            help: "None"
-                        }
-                    }, ]
-                }
-            }, {
-                category: {
-                    id: "7",
-                    name: "Maintenance",
-                    code: "T",
-                    description: "As with the previous category, dataset creators should provide answers to these questions prior to distributing the dataset. These questions are intended to encourage dataset creators to plan for dataset maintenance and communicate this plan with dataset consumers.",
-                    entries: [{
-                        entry: {
-                            id: "1",
-                            answer: "None",
-                            by: "",
-                            on: "",
-                            question: "Who is supporting/hosting/maintaining the dataset?",
-                            help: "Please be as thorough as possible."
-                        }
-                    }, {
-                        entry: {
-                            id: "2",
-                            answer: "None",
-                            by: "",
-                            on: "",
-                            question: "How can the owner/curator/manager of the dataset be contacted (e.g., email address)?",
-                            help: "None"
-                        }
-                    }, {
-                        entry: {
-                            id: "3",
-                            answer: "None",
-                            by: "",
-                            on: "",
-                            question: "Is there an erratum?",
-                            help: "If so, please provide a link or other access point."
-                        }
-                    }, {
-                        entry: {
-                            id: "4",
-                            answer: "None",
-                            by: "",
-                            on: "",
-                            question: "Will the dataset be updated (e.g., to correct labeling errors, add new instances, delete instances)?",
-                            help: "If so, please describe how often, by whom, and how updates will be communicated to users (e.g., mailing list, GitHub)?"
-                        }
-                    }, {
-                        entry: {
-                            id: "5",
-                            answer: "None",
-                            by: "",
-                            on: "",
-                            question: "If the dataset relates to people, are there applicable limits on the retention of the data associated with the instances (e.g., were individuals in question told that their data would be retained for a fixed period of time and then deleted)?",
-                            help: "If so, please describe these limits and explain how they will be enforced."
-                        }
-                    }, {
-                        entry: {
-                            id: "6",
-                            answer: "None",
-                            by: "",
-                            on: "",
-                            question: "Will older versions of the dataset continue to be supported/hosted/maintained?",
-                            help: "If so, please describe how. If not, please describe how its obsolescence will be communicated to users."
-                        }
-                    }, {
-                        entry: {
-                            id: "7",
-                            answer: "None",
-                            by: "",
-                            on: "",
-                            question: "If others want to extend/augment/build on/contribute to the dataset, is there a mechanism for them to do so?",
-                            help: "If so, please provide a description. Will these contributions be validated/verified? If so, please describe how. If not, why not? Is there a process for communicating/distributing these contributions to other users? If so, please provide a description."
-                        }
-                    }, {
-                        entry: {
-                            id: "8",
-                            answer: "None",
-                            by: "",
-                            on: "",
-                            question: "Any other comments?",
-                            help: "None"
-                        }
-                    }, ]
-                }
-            }, ],
-            definitions: [],
-            subsets: [{
-                subset: {
-                    id: "1",
-                    name: "Baseline",
-                    updated: "2019-11-22",
-                    modality: "TABULAR",
-                    format: "CSV",
-                    size: "4999",
-                    featureCount: "20",
-                    parentid: "0",
-                    covmat: "None",
-                    modsys: "None",
-                    purpose: "Contains CLL prognostic factor variables taken around time of diagnosis",
-                    link: "",
-                    features: [{
-                        feature: {
-                            id: "1",
-                            date: "None",
-                            name: "pid",
-                            values: "0..inf; integer",
-                            meaningNaNullNone: "Not possible in format.",
-                            meaningZero: "Zero is first patient",
-                            meaningBlankVoid: "Not possible in format.",
-                            sparsity: "None",
-                            mean: "None",
-                            std: "None",
-                            modality: "None",
-                            median: "None",
-                            iqr: "None",
-                            parents: "None",
-                            unit: "None",
-                            definition: "Pseudonymized patient identifier",
-                            purpose: "Needed to link different cohorts",
-                            encoding: "None"
-                        }
-                    }, {
-                        feature: {
-                            id: "2",
-                            date: "None",
-                            name: "Gender",
-                            values: "Male,Female",
-                            meaningNaNullNone: "No NA, NULL, or NONE",
-                            meaningZero: "No zeros",
-                            meaningBlankVoid: "Not possible in format.",
-                            sparsity: "None",
-                            mean: "None",
-                            std: "None",
-                            modality: "None",
-                            median: "None",
-                            iqr: "None",
-                            parents: "None",
-                            unit: "None",
-                            definition: "Gender assigned at birth based on physical characteristics.",
-                            purpose: "Often a proxy for other biological features. It might be used to stratify and control for batch effects or examined directly as a covariate of interest.",
-                            encoding: "None"
-                        }
-                    }, {
-                        feature: {
-                            id: "3",
-                            date: "None",
-                            name: "Age",
-                            values: "0..inf; integer",
-                            meaningNaNullNone: "No NA, NULL, or NONE",
-                            meaningZero: "No zeros",
-                            meaningBlankVoid: "Not possible in format.",
-                            sparsity: "None",
-                            mean: "None",
-                            std: "None",
-                            modality: "None",
-                            median: "None",
-                            iqr: "None",
-                            parents: "None",
-                            unit: "yrs",
-                            definition: "Age at time of CLL diagnosis",
-                            purpose: "Often a proxy for other biological features. It might be used to stratify and control for batch effects or examined directly as a covariate of interest.",
-                            encoding: "None"
-                        }
-                    }, {
-                        feature: {
-                            id: "4",
-                            date: "None",
-                            name: "Binet",
-                            values: "A,B,C",
-                            meaningNaNullNone: "No NA, NULL, or NONE",
-                            meaningZero: "No zeros",
-                            meaningBlankVoid: "Not possible in format.",
-                            sparsity: "None",
-                            mean: "None",
-                            std: "None",
-                            modality: "None",
-                            median: "None",
-                            iqr: "None",
-                            parents: "None",
-                            unit: "None",
-                            definition: "number of affected lymphoid tissue groups",
-                            purpose: "CLL Prognostic Factor",
-                            encoding: "None"
-                        }
-                    }, {
-                        feature: {
-                            id: "5",
-                            date: "None",
-                            name: "ECOG.PS",
-                            values: "0,1,2,3,4",
-                            meaningNaNullNone: "nan means test not taken or inconclusive",
-                            meaningZero: "0 part of score",
-                            meaningBlankVoid: "Not possible in format.",
-                            sparsity: "None",
-                            mean: "None",
-                            std: "None",
-                            modality: "None",
-                            median: "None",
-                            iqr: "None",
-                            parents: "None",
-                            unit: "None",
-                            definition: "General well being score",
-                            purpose: "CLL Prognostic Factor",
-                            encoding: "None"
-                        }
-                    }, {
-                        feature: {
-                            id: "6",
-                            date: "None",
-                            name: "CLL.IPI",
-                            values: "Low, Intermediate,High,Very High",
-                            meaningNaNullNone: "nan means that not all CLL-IPI factors are available",
-                            meaningZero: "0 part of score",
-                            meaningBlankVoid: "Not possible in format.",
-                            sparsity: "None",
-                            mean: "None",
-                            std: "None",
-                            modality: "None",
-                            median: "None",
-                            iqr: "None",
-                            parents: "None",
-                            unit: "None",
-                            definition: "CLL Risk Score",
-                            purpose: "CLL Prognostic Factor",
-                            encoding: "None"
-                        }
-                    }, {
-                        feature: {
-                            id: "7",
-                            date: "None",
-                            name: "B2M",
-                            values: "<4.0 mg/L, >4.0 mg/L",
-                            meaningNaNullNone: "nan means test not taken or inconclusive",
-                            meaningZero: "No zeros",
-                            meaningBlankVoid: "Not possible in format.",
-                            sparsity: "None",
-                            mean: "None",
-                            std: "None",
-                            modality: "None",
-                            median: "None",
-                            iqr: "None",
-                            parents: "None",
-                            unit: "None",
-                            definition: "beta2-microglobulin levels",
-                            purpose: "CLL Prognostic Factor",
-                            encoding: "None"
-                        }
-                    }, {
-                        feature: {
-                            id: "8",
-                            date: "None",
-                            name: "IGHV",
-                            values: "Mutated, unmutated",
-                            meaningNaNullNone: "nan means test not taken or inconclusive",
-                            meaningZero: "No zeros",
-                            meaningBlankVoid: "Not possible in format.",
-                            sparsity: "None",
-                            mean: "None",
-                            std: "None",
-                            modality: "None",
-                            median: "None",
-                            iqr: "None",
-                            parents: "None",
-                            unit: "None",
-                            definition: "Immunoglobulin heavy chain variable region mutated status",
-                            purpose: "CLL Prognostic Factor",
-                            encoding: "None"
-                        }
-                    }, {
-                        feature: {
-                            id: "9",
-                            date: "None",
-                            name: "FISH.status",
-                            values: "Del13q,Normal,Tri12,Del17p",
-                            meaningNaNullNone: "nan means that not all FISH factors are available",
-                            meaningZero: "No zeros",
-                            meaningBlankVoid: "Not possible in format.",
-                            sparsity: "None",
-                            mean: "None",
-                            std: "None",
-                            modality: "None",
-                            median: "None",
-                            iqr: "None",
-                            parents: "None",
-                            unit: "None",
-                            definition: "Chromosomal abnormalities in CLL",
-                            purpose: "CLL Prognostic Factor",
-                            encoding: "None"
-                        }
-                    }, {
-                        feature: {
-                            id: "10",
-                            date: "None",
-                            name: "DEL13Q",
-                            values: "Yes,No",
-                            meaningNaNullNone: "nan means test not taken or inconclusive",
-                            meaningZero: "No zeros",
-                            meaningBlankVoid: "Not possible in format.",
-                            sparsity: "None",
-                            mean: "None",
-                            std: "None",
-                            modality: "None",
-                            median: "None",
-                            iqr: "None",
-                            parents: "None",
-                            unit: "None",
-                            definition: "Chromosomal abnormalities in CLL",
-                            purpose: "CLL Prognostic Factor",
-                            encoding: "None"
-                        }
-                    }, {
-                        feature: {
-                            id: "11",
-                            date: "None",
-                            name: "TRISOM12",
-                            values: "Yes,No",
-                            meaningNaNullNone: "nan means test not taken or inconclusive",
-                            meaningZero: "No zeros",
-                            meaningBlankVoid: "Not possible in format.",
-                            sparsity: "None",
-                            mean: "None",
-                            std: "None",
-                            modality: "None",
-                            median: "None",
-                            iqr: "None",
-                            parents: "None",
-                            unit: "None",
-                            definition: "Chromosomal abnormalities in CLL",
-                            purpose: "CLL Prognostic Factor",
-                            encoding: "None"
-                        }
-                    }, {
-                        feature: {
-                            id: "12",
-                            date: "None",
-                            name: "DEL11Q",
-                            values: "Yes,No",
-                            meaningNaNullNone: "nan means test not taken or inconclusive",
-                            meaningZero: "No zeros",
-                            meaningBlankVoid: "Not possible in format.",
-                            sparsity: "None",
-                            mean: "None",
-                            std: "None",
-                            modality: "None",
-                            median: "None",
-                            iqr: "None",
-                            parents: "None",
-                            unit: "None",
-                            definition: "Chromosomal abnormalities in CLL",
-                            purpose: "CLL Prognostic Factor",
-                            encoding: "None"
-                        }
-                    }, {
-                        feature: {
-                            id: "13",
-                            date: "None",
-                            name: "DEL17p",
-                            values: "Yes,No",
-                            meaningNaNullNone: "nan means test not taken or inconclusive",
-                            meaningZero: "No zeros",
-                            meaningBlankVoid: "Not possible in format.",
-                            sparsity: "None",
-                            mean: "None",
-                            std: "None",
-                            modality: "None",
-                            median: "None",
-                            iqr: "None",
-                            parents: "None",
-                            unit: "None",
-                            definition: "Chromosomal abnormalities in CLL",
-                            purpose: "CLL Prognostic Factor",
-                            encoding: "None"
-                        }
-                    }, {
-                        feature: {
-                            id: "14",
-                            date: "None",
-                            name: "ZAP70",
-                            values: "Yes,No",
-                            meaningNaNullNone: "nan means test not taken or inconclusive",
-                            meaningZero: "No zeros",
-                            meaningBlankVoid: "Not possible in format.",
-                            sparsity: "None",
-                            mean: "None",
-                            std: "None",
-                            modality: "None",
-                            median: "None",
-                            iqr: "None",
-                            parents: "None",
-                            unit: "None",
-                            definition: "Zeta-chain-associated protein kinase 70 (ZAP-70) expression",
-                            purpose: "CLL Prognostic Factor",
-                            encoding: "None"
-                        }
-                    }, {
-                        feature: {
-                            id: "15",
-                            date: "None",
-                            name: "CD38",
-                            values: "Yes,No",
-                            meaningNaNullNone: "nan means test not taken or inconclusive",
-                            meaningZero: "No zeros",
-                            meaningBlankVoid: "Not possible in format.",
-                            sparsity: "None",
-                            mean: "None",
-                            std: "None",
-                            modality: "None",
-                            median: "None",
-                            iqr: "None",
-                            parents: "None",
-                            unit: "None",
-                            definition: "Expression of CD38 by CLL cells",
-                            purpose: "CLL Prognostic Factor",
-                            encoding: "None"
-                        }
-                    }, {
-                        feature: {
-                            id: "16",
-                            date: "None",
-                            name: "Anemia",
-                            values: "Yes,No",
-                            meaningNaNullNone: "nan means test not taken or inconclusive",
-                            meaningZero: "No zeros",
-                            meaningBlankVoid: "Not possible in format.",
-                            sparsity: "None",
-                            mean: "None",
-                            std: "None",
-                            modality: "None",
-                            median: "None",
-                            iqr: "None",
-                            parents: "None",
-                            unit: "None",
-                            definition: "Low red blood cell count",
-                            purpose: "CLL Prognostic Factor",
-                            encoding: "None"
-                        }
-                    }, {
-                        feature: {
-                            id: "17",
-                            date: "None",
-                            name: "Thrombopenia",
-                            values: "Yes,No",
-                            meaningNaNullNone: "nan means test not taken or inconclusive",
-                            meaningZero: "No zeros",
-                            meaningBlankVoid: "Not possible in format.",
-                            sparsity: "None",
-                            mean: "None",
-                            std: "None",
-                            modality: "None",
-                            median: "None",
-                            iqr: "None",
-                            parents: "None",
-                            unit: "None",
-                            definition: "Low platelet count",
-                            purpose: "CLL Prognostic Factor",
-                            encoding: "None"
-                        }
-                    }, {
-                        feature: {
-                            id: "18",
-                            date: "None",
-                            name: "Weight.loss",
-                            values: "Yes,No",
-                            meaningNaNullNone: "nan means test not taken or inconclusive",
-                            meaningZero: "No zeros",
-                            meaningBlankVoid: "Not possible in format.",
-                            sparsity: "None",
-                            mean: "None",
-                            std: "None",
-                            modality: "None",
-                            median: "None",
-                            iqr: "None",
-                            parents: "None",
-                            unit: "None",
-                            definition: "Weight Loss",
-                            purpose: "CLL Prognostic Factor",
-                            encoding: "None"
-                        }
-                    }, {
-                        feature: {
-                            id: "19",
-                            date: "None",
-                            name: "Fever",
-                            values: "Yes,No",
-                            meaningNaNullNone: "nan means test not taken or inconclusive",
-                            meaningZero: "No zeros",
-                            meaningBlankVoid: "Not possible in format.",
-                            sparsity: "None",
-                            mean: "None",
-                            std: "None",
-                            modality: "None",
-                            median: "None",
-                            iqr: "None",
-                            parents: "None",
-                            unit: "None",
-                            definition: "Fever",
-                            purpose: "CLL Prognostic Factor",
-                            encoding: "None"
-                        }
-                    }, {
-                        feature: {
-                            id: "20",
-                            date: "None",
-                            name: "Night.sweat",
-                            values: "Yes,No",
-                            meaningNaNullNone: "nan means test not taken or inconclusive",
-                            meaningZero: "No zeros",
-                            meaningBlankVoid: "Not possible in format.",
-                            sparsity: "None",
-                            mean: "None",
-                            std: "None",
-                            modality: "None",
-                            median: "None",
-                            iqr: "None",
-                            parents: "None",
-                            unit: "None",
-                            definition: "Night Sweats",
-                            purpose: "CLL Prognostic Factor",
-                            encoding: "None"
-                        }
-                    }, ]
-                }
-            }, {
-                subset: {
-                    id: "2",
-                    name: "CLL Registry",
-                    updated: "2019-11-22",
-                    modality: "TABULAR",
-                    format: "CSV",
-                    size: "4999",
-                    featureCount: "11",
-                    parentid: "0",
-                    covmat: "None",
-                    modsys: "None",
-                    purpose: "Patient information relevant for generaiton of outcomes related to treatment and death",
-                    link: "",
-                    features: [{
-                        feature: {
-                            id: "1",
-                            date: "None",
-                            name: "pid",
-                            values: "0..inf; integer",
-                            meaningNaNullNone: "Not possible in format.",
-                            meaningZero: "Zero is first patient",
-                            meaningBlankVoid: "Not possible in format.",
-                            sparsity: "None",
-                            mean: "None",
-                            std: "None",
-                            modality: "None",
-                            median: "None",
-                            iqr: "None",
-                            parents: "None",
-                            unit: "None",
-                            definition: "Pseudonymized patient identifier",
-                            purpose: "Needed to link different cohorts",
-                            encoding: "None"
-                        }
-                    }, {
-                        feature: {
-                            id: "2",
-                            date: "None",
-                            name: "Date_of_birth",
-                            values: "YYYY-MM-DD",
-                            meaningNaNullNone: "No NA, NULL, or NONE",
-                            meaningZero: "No zeros",
-                            meaningBlankVoid: "Not possible in format.",
-                            sparsity: "None",
-                            mean: "None",
-                            std: "None",
-                            modality: "None",
-                            median: "None",
-                            iqr: "None",
-                            parents: "None",
-                            unit: "None",
-                            definition: "Date of Birth",
-                            purpose: "Needed to calculate age at different time-points",
-                            encoding: "None"
-                        }
-                    }, {
-                        feature: {
-                            id: "3",
-                            date: "None",
-                            name: "Date_diag",
-                            values: "YYYY-MM-DD",
-                            meaningNaNullNone: "No NA, NULL, or NONE",
-                            meaningZero: "No zeros",
-                            meaningBlankVoid: "Not possible in format.",
-                            sparsity: "None",
-                            mean: "None",
-                            std: "None",
-                            modality: "None",
-                            median: "None",
-                            iqr: "None",
-                            parents: "None",
-                            unit: "None",
-                            definition: "Date of CLL Diagnosis",
-                            purpose: "Baseline variables calculated around time of diagnosis",
-                            encoding: "None"
-                        }
-                    }, {
-                        feature: {
-                            id: "4",
-                            date: "None",
-                            name: "Date_treatment",
-                            values: "YYYY-MM-DD",
-                            meaningNaNullNone: "Null Means no treatment given or",
-                            meaningZero: "No zeros",
-                            meaningBlankVoid: "Not possible in format.",
-                            sparsity: "None",
-                            mean: "None",
-                            std: "None",
-                            modality: "None",
-                            median: "None",
-                            iqr: "None",
-                            parents: "None",
-                            unit: "None",
-                            definition: "Date of CLL Treatment",
-                            purpose: "Needed for outcome definition",
-                            encoding: "None"
-                        }
-                    }, {
-                        feature: {
-                            id: "5",
-                            date: "None",
-                            name: "Date_DeathFollowup",
-                            values: "YYYY-MM-DD",
-                            meaningNaNullNone: "No NA, NULL, or NONE",
-                            meaningZero: "No zeros",
-                            meaningBlankVoid: "Not possible in format.",
-                            sparsity: "None",
-                            mean: "None",
-                            std: "None",
-                            modality: "None",
-                            median: "None",
-                            iqr: "None",
-                            parents: "None",
-                            unit: "None",
-                            definition: "Date of Death or Last Follow Up",
-                            purpose: "Needed for outcome definition",
-                            encoding: "None"
-                        }
-                    }, {
-                        feature: {
-                            id: "6",
-                            date: "None",
-                            name: "Date_Death",
-                            values: "YYYY-MM-DD",
-                            meaningNaNullNone: "nan Means patient is still alive",
-                            meaningZero: "No zeros",
-                            meaningBlankVoid: "Not possible in format.",
-                            sparsity: "None",
-                            mean: "None",
-                            std: "None",
-                            modality: "None",
-                            median: "None",
-                            iqr: "None",
-                            parents: "None",
-                            unit: "None",
-                            definition: "Date of Death",
-                            purpose: "Needed for outcome definition",
-                            encoding: "None"
-                        }
-                    }, {
-                        feature: {
-                            id: "7",
-                            date: "None",
-                            name: "Date_PFS",
-                            values: "YYYY-MM-DD",
-                            meaningNaNullNone: "No NA, NULL, or NONE",
-                            meaningZero: "No zeros",
-                            meaningBlankVoid: "Not possible in format.",
-                            sparsity: "None",
-                            mean: "None",
-                            std: "None",
-                            modality: "None",
-                            median: "None",
-                            iqr: "None",
-                            parents: "None",
-                            unit: "None",
-                            definition: "Last Date of Progression Free Survival",
-                            purpose: "Needed for outcome definition",
-                            encoding: "None"
-                        }
-                    }, {
-                        feature: {
-                            id: "8",
-                            date: "None",
-                            name: "Progression",
-                            values: "0,1",
-                            meaningNaNullNone: "No NA, NULL, or NONE",
-                            meaningZero: "Zero means no progression",
-                            meaningBlankVoid: "Not possible in format.",
-                            sparsity: "None",
-                            mean: "None",
-                            std: "None",
-                            modality: "None",
-                            median: "None",
-                            iqr: "None",
-                            parents: "None",
-                            unit: "None",
-                            definition: "Whether CLL Disease Progressed",
-                            purpose: "Needed for outcome definition",
-                            encoding: "None"
-                        }
-                    }, {
-                        feature: {
-                            id: "9",
-                            date: "None",
-                            name: "TimeTo_PFS",
-                            values: "0..inf; integer",
-                            meaningNaNullNone: "No NA, NULL, or NONE",
-                            meaningZero: "Zero is time to progression",
-                            meaningBlankVoid: "Not possible in format.",
-                            sparsity: "None",
-                            mean: "None",
-                            std: "None",
-                            modality: "None",
-                            median: "None",
-                            iqr: "None",
-                            parents: "None",
-                            unit: "Days",
-                            definition: "Time to Progression Free Survival",
-                            purpose: "Needed for outcome definition",
-                            encoding: "None"
-                        }
-                    }, {
-                        feature: {
-                            id: "10",
-                            date: "None",
-                            name: "Treatment",
-                            values: "0,1",
-                            meaningNaNullNone: "No NA, NULL, or NONE",
-                            meaningZero: "Zero is no treatment",
-                            meaningBlankVoid: "Not possible in format.",
-                            sparsity: "None",
-                            mean: "None",
-                            std: "None",
-                            modality: "None",
-                            median: "None",
-                            iqr: "None",
-                            parents: "None",
-                            unit: "None",
-                            definition: "Whether Patient Received CLL Treatment",
-                            purpose: "Needed for outcome definition",
-                            encoding: "None"
-                        }
-                    }, {
-                        feature: {
-                            id: "11",
-                            date: "None",
-                            name: "TimeTo_Treatment",
-                            values: "0..inf; integer",
-                            meaningNaNullNone: "No NA, NULL, or NONE",
-                            meaningZero: "Zero is time to treatment",
-                            meaningBlankVoid: "Not possible in format.",
-                            sparsity: "None",
-                            mean: "None",
-                            std: "None",
-                            modality: "None",
-                            median: "None",
-                            iqr: "None",
-                            parents: "None",
-                            unit: "Days",
-                            definition: "Time to CLL Treatment",
-                            purpose: "Needed for outcome definition",
-                            encoding: "None"
-                        }
-                    }, ]
-                }
-            }, {
-                subset: {
-                    id: "3",
-                    name: "Treatment Outcome",
-                    updated: "2020-02-30",
-                    modality: "TABULAR",
-                    format: "CSV",
-                    size: "1996",
-                    featureCount: "5",
-                    parentid: "0",
-                    covmat: "None",
-                    modsys: "None",
-                    purpose: "Treatment outcome information that includdes lines of treament and type of treament",
-                    link: "",
-                    features: [{
-                        feature: {
-                            id: "1",
-                            date: "None",
-                            name: "pid",
-                            values: "0..inf; integer",
-                            meaningNaNullNone: "Not possible in format.",
-                            meaningZero: "Zero is first patient",
-                            meaningBlankVoid: "Not possible in format.",
-                            sparsity: "None",
-                            mean: "None",
-                            std: "None",
-                            modality: "None",
-                            median: "None",
-                            iqr: "None",
-                            parents: "None",
-                            unit: "None",
-                            definition: "Pseudonymized patient identifier",
-                            purpose: "Needed to link different cohorts",
-                            encoding: "None"
-                        }
-                    }, {
-                        feature: {
-                            id: "2",
-                            date: "None",
-                            name: "line",
-                            values: "1..8; integer",
-                            meaningNaNullNone: "No NA, NULL, or NONE",
-                            meaningZero: "No zeros",
-                            meaningBlankVoid: "Not possible in format.",
-                            sparsity: "None",
-                            mean: "None",
-                            std: "None",
-                            modality: "None",
-                            median: "None",
-                            iqr: "None",
-                            parents: "None",
-                            unit: "None",
-                            definition: "Line of treatment",
-                            purpose: "Needed for outcome definition",
-                            encoding: "None"
-                        }
-                    }, {
-                        feature: {
-                            id: "3",
-                            date: "None",
-                            name: "date_treatment",
-                            values: "YYYY-MM-DD",
-                            meaningNaNullNone: "No NA, NULL, or NONE",
-                            meaningZero: "No zeros",
-                            meaningBlankVoid: "Not possible in format.",
-                            sparsity: "None",
-                            mean: "None",
-                            std: "None",
-                            modality: "None",
-                            median: "None",
-                            iqr: "None",
-                            parents: "None",
-                            unit: "None",
-                            definition: "Start date for given line of treatment",
-                            purpose: "Needed for outcome definition",
-                            encoding: "None"
-                        }
-                    }, {
-                        feature: {
-                            id: "4",
-                            date: "None",
-                            name: "chemotherapy",
-                            values: "Many;string",
-                            meaningNaNullNone: "No NA, NULL, or NONE",
-                            meaningZero: "No zeros",
-                            meaningBlankVoid: "Not possible in format.",
-                            sparsity: "None",
-                            mean: "None",
-                            std: "None",
-                            modality: "None",
-                            median: "None",
-                            iqr: "None",
-                            parents: "None",
-                            unit: "None",
-                            definition: "Treatment included chemotherapy",
-                            purpose: "Needed for outcome definition",
-                            encoding: "None"
-                        }
-                    }, {
-                        feature: {
-                            id: "5",
-                            date: "None",
-                            name: "immunotherapy",
-                            values: "Many;string",
-                            meaningNaNullNone: "nan means immunotherapy not given",
-                            meaningZero: "No zeros",
-                            meaningBlankVoid: "Not possible in format.",
-                            sparsity: "None",
-                            mean: "None",
-                            std: "None",
-                            modality: "None",
-                            median: "None",
-                            iqr: "None",
-                            parents: "None",
-                            unit: "None",
-                            definition: "Treatment included immunotherapy",
-                            purpose: "Needed for outcome definition",
-                            encoding: "None"
-                        }
-                    }, ]
-                }
-            }, {
-                subset: {
-                    id: "4",
-                    name: "Diagnosis",
-                    updated: "2020-02-30",
-                    modality: "TABULAR",
-                    format: "CSV",
-                    size: "147197",
-                    featureCount: "4",
-                    parentid: "0",
-                    covmat: "None",
-                    modsys: "None",
-                    purpose: "Historical data on previous patient diagnosis - not necessarily related to CLL",
-                    link: "",
-                    features: [{
-                        feature: {
-                            id: "1",
-                            date: "None",
-                            name: "pid",
-                            values: "0..inf; integer",
-                            meaningNaNullNone: "Not possible in format.",
-                            meaningZero: "Zero is first patient",
-                            meaningBlankVoid: "Not possible in format.",
-                            sparsity: "None",
-                            mean: "None",
-                            std: "None",
-                            modality: "None",
-                            median: "None",
-                            iqr: "None",
-                            parents: "None",
-                            unit: "None",
-                            definition: "Pseudonymized patient identifier",
-                            purpose: "Needed to link different cohorts",
-                            encoding: "None"
-                        }
-                    }, {
-                        feature: {
-                            id: "2",
-                            date: "None",
-                            name: "DIAG_CODE",
-                            values: "Many;string",
-                            meaningNaNullNone: "No NA, NULL, or NONE",
-                            meaningZero: "No zeros",
-                            meaningBlankVoid: "Not possible in format.",
-                            sparsity: "None",
-                            mean: "None",
-                            std: "None",
-                            modality: "None",
-                            median: "None",
-                            iqr: "None",
-                            parents: "None",
-                            unit: "None",
-                            definition: "Diagnosis code",
-                            purpose: "Potential Feature",
-                            encoding: "None"
-                        }
-                    }, {
-                        feature: {
-                            id: "3",
-                            date: "None",
-                            name: "DIAG_COURSE_D",
-                            values: "YYYY-MM-DD",
-                            meaningNaNullNone: "No NA, NULL, or NONE",
-                            meaningZero: "No zeros",
-                            meaningBlankVoid: "Not possible in format.",
-                            sparsity: "None",
-                            mean: "None",
-                            std: "None",
-                            modality: "None",
-                            median: "None",
-                            iqr: "None",
-                            parents: "None",
-                            unit: "None",
-                            definition: "Date of diagnosis code",
-                            purpose: "Potential Feature",
-                            encoding: "None"
-                        }
-                    }, {
-                        feature: {
-                            id: "4",
-                            date: "None",
-                            name: "DIAG_COURSE_T",
-                            values: "HH-MM-SS",
-                            meaningNaNullNone: "No NA, NULL, or NONE",
-                            meaningZero: "No zeros",
-                            meaningBlankVoid: "Not possible in format.",
-                            sparsity: "None",
-                            mean: "None",
-                            std: "None",
-                            modality: "None",
-                            median: "None",
-                            iqr: "None",
-                            parents: "None",
-                            unit: "None",
-                            definition: "Time in day of diagnosis code",
-                            purpose: "Potential Feature",
-                            encoding: "None"
-                        }
-                    }, ]
-                }
-            }, {
-                subset: {
-                    id: "5",
-                    name: "Laboratory",
-                    updated: "2020-02-30",
-                    modality: "TABULAR",
-                    format: "CSV",
-                    size: "4226248",
-                    featureCount: "4",
-                    parentid: "0",
-                    covmat: "None",
-                    modsys: "None",
-                    purpose: "Laboratory tests data - not necessarily related to CLL",
-                    link: "",
-                    features: [{
-                        feature: {
-                            id: "1",
-                            date: "None",
-                            name: "pid",
-                            values: "0..inf; integer",
-                            meaningNaNullNone: "Not possible in format.",
-                            meaningZero: "No zeros",
-                            meaningBlankVoid: "Not possible in format.",
-                            sparsity: "None",
-                            mean: "None",
-                            std: "None",
-                            modality: "None",
-                            median: "None",
-                            iqr: "None",
-                            parents: "None",
-                            unit: "None",
-                            definition: "Pseudonymized patient identifier",
-                            purpose: "Needed to link different cohorts",
-                            encoding: "None"
-                        }
-                    }, {
-                        feature: {
-                            id: "2",
-                            date: "None",
-                            name: "LAB_ID",
-                            values: "Many;string",
-                            meaningNaNullNone: "No NA, NULL, or NONE",
-                            meaningZero: "No zeros",
-                            meaningBlankVoid: "Not possible in format.",
-                            sparsity: "None",
-                            mean: "None",
-                            std: "None",
-                            modality: "None",
-                            median: "None",
-                            iqr: "None",
-                            parents: "None",
-                            unit: "None",
-                            definition: "Name of Laboratory Test",
-                            purpose: "Potential Feature",
-                            encoding: "None"
-                        }
-                    }, {
-                        feature: {
-                            id: "3",
-                            date: "None",
-                            name: "LAB_D",
-                            values: "YYYY-MM-DD",
-                            meaningNaNullNone: "No NA, NULL, or NONE",
-                            meaningZero: "No zeros",
-                            meaningBlankVoid: "Not possible in format.",
-                            sparsity: "None",
-                            mean: "None",
-                            std: "None",
-                            modality: "None",
-                            median: "None",
-                            iqr: "None",
-                            parents: "None",
-                            unit: "None",
-                            definition: "Laboratory Test Date",
-                            purpose: "Potential Feature",
-                            encoding: "None"
-                        }
-                    }, {
-                        feature: {
-                            id: "4",
-                            date: "None",
-                            name: "LAB_T",
-                            values: "HH-MM-SS",
-                            meaningNaNullNone: "No NA, NULL, or NONE",
-                            meaningZero: "No zeros",
-                            meaningBlankVoid: "Not possible in format.",
-                            sparsity: "None",
-                            mean: "None",
-                            std: "None",
-                            modality: "None",
-                            median: "None",
-                            iqr: "None",
-                            parents: "None",
-                            unit: "None",
-                            definition: "Laboratory Test Time in day",
-                            purpose: "Potential Feature",
-                            encoding: "None"
-                        }
-                    }, ]
-                }
-            }, {
-                subset: {
-                    id: "6",
-                    name: "Pathology",
-                    updated: "2020-02-30",
-                    modality: "TABULAR",
-                    format: "CSV",
-                    size: "199337",
-                    featureCount: "4",
-                    parentid: "0",
-                    covmat: "None",
-                    modsys: "None",
-                    purpose: "Historical data on previous patient pathology - not necessarily related to CLL",
-                    link: "",
-                    features: [{
-                        feature: {
-                            id: "1",
-                            date: "None",
-                            name: "pid",
-                            values: "0..inf; integer",
-                            meaningNaNullNone: "Not possible in format.",
-                            meaningZero: "No zeros",
-                            meaningBlankVoid: "Not possible in format.",
-                            sparsity: "None",
-                            mean: "None",
-                            std: "None",
-                            modality: "None",
-                            median: "None",
-                            iqr: "None",
-                            parents: "None",
-                            unit: "None",
-                            definition: "Pseudonymized patient identifier",
-                            purpose: "Needed to link different cohorts",
-                            encoding: "None"
-                        }
-                    }, {
-                        feature: {
-                            id: "2",
-                            date: "None",
-                            name: "PAT_CODE",
-                            values: "Many;string",
-                            meaningNaNullNone: "No NA, NULL, or NONE",
-                            meaningZero: "No zeros",
-                            meaningBlankVoid: "Not possible in format.",
-                            sparsity: "None",
-                            mean: "None",
-                            std: "None",
-                            modality: "None",
-                            median: "None",
-                            iqr: "None",
-                            parents: "None",
-                            unit: "None",
-                            definition: "Pathology Code",
-                            purpose: "Potential Feature",
-                            encoding: "None"
-                        }
-                    }, {
-                        feature: {
-                            id: "3",
-                            date: "None",
-                            name: "PAT_D",
-                            values: "YYYY-MM-DD",
-                            meaningNaNullNone: "No NA, NULL, or NONE",
-                            meaningZero: "No zeros",
-                            meaningBlankVoid: "Not possible in format.",
-                            sparsity: "None",
-                            mean: "None",
-                            std: "None",
-                            modality: "None",
-                            median: "None",
-                            iqr: "None",
-                            parents: "None",
-                            unit: "None",
-                            definition: "Pathology Date",
-                            purpose: "Potential Feature",
-                            encoding: "None"
-                        }
-                    }, {
-                        feature: {
-                            id: "4",
-                            date: "None",
-                            name: "PAT_T",
-                            values: "HH-MM-SS",
-                            meaningNaNullNone: "No NA, NULL, or NONE",
-                            meaningZero: "No zeros",
-                            meaningBlankVoid: "Not possible in format.",
-                            sparsity: "None",
-                            mean: "None",
-                            std: "None",
-                            modality: "None",
-                            median: "None",
-                            iqr: "None",
-                            parents: "None",
-                            unit: "None",
-                            definition: "Pathology time in day",
-                            purpose: "Potential Feature",
-                            encoding: "None"
-                        }
-                    }, ]
-                }
-            }, {
-                subset: {
-                    id: "7",
-                    name: "Laboratory Cultures",
-                    updated: "2020-02-30",
-                    modality: "TABULAR",
-                    format: "CSV",
-                    size: "84299",
-                    featureCount: "9",
-                    parentid: "0",
-                    covmat: "None",
-                    modsys: "None",
-                    purpose: "Laboratory culture data - necessarily for creating features and outcomes related to infections",
-                    link: "",
-                    features: [{
-                        feature: {
-                            id: "1",
-                            date: "None",
-                            name: "pid",
-                            values: "0..inf; integer",
-                            meaningNaNullNone: "Not possible in format.",
-                            meaningZero: "No zeros",
-                            meaningBlankVoid: "Not possible in format.",
-                            sparsity: "None",
-                            mean: "None",
-                            std: "None",
-                            modality: "None",
-                            median: "None",
-                            iqr: "None",
-                            parents: "None",
-                            unit: "None",
-                            definition: "Pseudonymized patient identifier",
-                            purpose: "Needed to link different cohorts",
-                            encoding: "None"
-                        }
-                    }, {
-                        feature: {
-                            id: "2",
-                            date: "None",
-                            name: "SAMPLE_NO",
-                            values: "0..inf; integer",
-                            meaningNaNullNone: "No NA, NULL, or NONE",
-                            meaningZero: "No zeros",
-                            meaningBlankVoid: "Not possible in format.",
-                            sparsity: "None",
-                            mean: "None",
-                            std: "None",
-                            modality: "None",
-                            median: "None",
-                            iqr: "None",
-                            parents: "None",
-                            unit: "None",
-                            definition: "Sample Number",
-                            purpose: "Potential Feature & Needed for Outcome Definition ",
-                            encoding: "None"
-                        }
-                    }, {
-                        feature: {
-                            id: "3",
-                            date: "None",
-                            name: "SAMPLE_MAT",
-                            values: "Many;string",
-                            meaningNaNullNone: "No NA, NULL, or NONE",
-                            meaningZero: "No zeros",
-                            meaningBlankVoid: "Not possible in format.",
-                            sparsity: "None",
-                            mean: "None",
-                            std: "None",
-                            modality: "None",
-                            median: "None",
-                            iqr: "None",
-                            parents: "None",
-                            unit: "None",
-                            definition: "Category of Sample (blood, urine, etc)",
-                            purpose: "Potential Feature & Needed for Outcome Definition ",
-                            encoding: "None"
-                        }
-                    }, {
-                        feature: {
-                            id: "4",
-                            date: "None",
-                            name: "SAMPLE_D",
-                            values: "YYYY-MM-DD",
-                            meaningNaNullNone: "No NA, NULL, or NONE",
-                            meaningZero: "No zeros",
-                            meaningBlankVoid: "Not possible in format.",
-                            sparsity: "None",
-                            mean: "None",
-                            std: "None",
-                            modality: "None",
-                            median: "None",
-                            iqr: "None",
-                            parents: "None",
-                            unit: "None",
-                            definition: "Sample Date",
-                            purpose: "Potential Feature & Needed for Outcome Definition ",
-                            encoding: "None"
-                        }
-                    }, {
-                        feature: {
-                            id: "5",
-                            date: "None",
-                            name: "SAMPLE_T",
-                            values: "HH-MM-SS",
-                            meaningNaNullNone: "No NA, NULL, or NONE",
-                            meaningZero: "No zeros",
-                            meaningBlankVoid: "Not possible in format.",
-                            sparsity: "None",
-                            mean: "None",
-                            std: "None",
-                            modality: "None",
-                            median: "None",
-                            iqr: "None",
-                            parents: "None",
-                            unit: "None",
-                            definition: "Sample Time in Day",
-                            purpose: "Potential Feature & Needed for Outcome Definition ",
-                            encoding: "None"
-                        }
-                    }, {
-                        feature: {
-                            id: "6",
-                            date: "None",
-                            name: "CULT_MAT_GROUP",
-                            values: "Many;string",
-                            meaningNaNullNone: "No NA, NULL, or NONE",
-                            meaningZero: "No zeros",
-                            meaningBlankVoid: "Not possible in format.",
-                            sparsity: "None",
-                            mean: "None",
-                            std: "None",
-                            modality: "None",
-                            median: "None",
-                            iqr: "None",
-                            parents: "None",
-                            unit: "None",
-                            definition: "Category of lab culture",
-                            purpose: "Potential Feature & Needed for Outcome Definition ",
-                            encoding: "None"
-                        }
-                    }, {
-                        feature: {
-                            id: "7",
-                            date: "None",
-                            name: "RESULT",
-                            values: "Many;string",
-                            meaningNaNullNone: "No NA, NULL, or NONE",
-                            meaningZero: "No zeros",
-                            meaningBlankVoid: "Not possible in format.",
-                            sparsity: "None",
-                            mean: "None",
-                            std: "None",
-                            modality: "None",
-                            median: "None",
-                            iqr: "None",
-                            parents: "None",
-                            unit: "None",
-                            definition: "Result of lab culture",
-                            purpose: "Potential Feature & Needed for Outcome Definition ",
-                            encoding: "None"
-                        }
-                    }, {
-                        feature: {
-                            id: "8",
-                            date: "None",
-                            name: "CULT_FIND",
-                            values: "0..inf; integer",
-                            meaningNaNullNone: "nan possibly missing at random",
-                            meaningZero: "No zeros",
-                            meaningBlankVoid: "Not possible in format.",
-                            sparsity: "None",
-                            mean: "None",
-                            std: "None",
-                            modality: "None",
-                            median: "None",
-                            iqr: "None",
-                            parents: "None",
-                            unit: "None",
-                            definition: "Abundance of Finding",
-                            purpose: "Potential Feature & Needed for Outcome Definition ",
-                            encoding: "None"
-                        }
-                    }, {
-                        feature: {
-                            id: "9",
-                            date: "None",
-                            name: "RESULT_CAT",
-                            values: "Positive,Negative",
-                            meaningNaNullNone: "nan possibly missing at random",
-                            meaningZero: "No zeros",
-                            meaningBlankVoid: "Not possible in format.",
-                            sparsity: "None",
-                            mean: "None",
-                            std: "None",
-                            modality: "None",
-                            median: "None",
-                            iqr: "None",
-                            parents: "None",
-                            unit: "None",
-                            definition: "Whether Positive or Negative Finding",
-                            purpose: "Potential Feature & Needed for Outcome Definition ",
-                            encoding: "None"
-                        }
-                    }, ]
-                }
-            }, {
-                subset: {
-                    id: "8",
-                    name: "Medications",
-                    updated: "2019-06-30",
-                    modality: "TABULAR",
-                    format: "CSV",
-                    size: "1098273",
-                    featureCount: "5",
-                    parentid: "0",
-                    covmat: "None",
-                    modsys: "None",
-                    purpose: "Historical data on prescribed medications - not neccesarily related to CLL",
-                    link: "",
-                    features: [{
-                        feature: {
-                            id: "1",
-                            date: "None",
-                            name: "pid",
-                            values: "0..inf; integer",
-                            meaningNaNullNone: "Not possible in format.",
-                            meaningZero: "No zeros",
-                            meaningBlankVoid: "Not possible in format.",
-                            sparsity: "None",
-                            mean: "None",
-                            std: "None",
-                            modality: "None",
-                            median: "None",
-                            iqr: "None",
-                            parents: "None",
-                            unit: "None",
-                            definition: "Pseudonymized patient identifier",
-                            purpose: "Needed to link different cohorts",
-                            encoding: "None"
-                        }
-                    }, {
-                        feature: {
-                            id: "2",
-                            date: "None",
-                            name: "atc_kode",
-                            values: "Many;string",
-                            meaningNaNullNone: "No NA, NULL, or NONE",
-                            meaningZero: "No zeros",
-                            meaningBlankVoid: "Not possible in format.",
-                            sparsity: "None",
-                            mean: "None",
-                            std: "None",
-                            modality: "None",
-                            median: "None",
-                            iqr: "None",
-                            parents: "None",
-                            unit: "None",
-                            definition: "Medication Code",
-                            purpose: "Potential Feature",
-                            encoding: "None"
-                        }
-                    }, {
-                        feature: {
-                            id: "3",
-                            date: "None",
-                            name: "expdato",
-                            values: "DDMMMYYYY",
-                            meaningNaNullNone: "No NA, NULL, or NONE",
-                            meaningZero: "No zeros",
-                            meaningBlankVoid: "Not possible in format.",
-                            sparsity: "None",
-                            mean: "None",
-                            std: "None",
-                            modality: "None",
-                            median: "None",
-                            iqr: "None",
-                            parents: "None",
-                            unit: "None",
-                            definition: "Start of Medication",
-                            purpose: "Potential Feature",
-                            encoding: "None"
-                        }
-                    }, {
-                        feature: {
-                            id: "4",
-                            date: "None",
-                            name: "Stryke",
-                            values: "1..inf;float",
-                            meaningNaNullNone: "nan means unknown",
-                            meaningZero: "No zeros",
-                            meaningBlankVoid: "Not possible in format.",
-                            sparsity: "None",
-                            mean: "None",
-                            std: "None",
-                            modality: "None",
-                            median: "None",
-                            iqr: "None",
-                            parents: "None",
-                            unit: "None",
-                            definition: "Dosage value",
-                            purpose: "Potential Feature",
-                            encoding: "None"
-                        }
-                    }, {
-                        feature: {
-                            id: "5",
-                            date: "None",
-                            name: "Unit",
-                            values: "Many;string",
-                            meaningNaNullNone: "nan means unknown",
-                            meaningZero: "No zeros",
-                            meaningBlankVoid: "Not possible in format.",
-                            sparsity: "None",
-                            mean: "None",
-                            std: "None",
-                            modality: "None",
-                            median: "None",
-                            iqr: "None",
-                            parents: "None",
-                            unit: "None",
-                            definition: "Dosage unit",
-                            purpose: "Potential Feature",
-                            encoding: "None"
-                        }
-                    }, ]
-                }
-            }, ]
-        })
+        var filledHandle = template({ title:"CLL-TIM",repository:"https://github.com/UltrathonOnline/MAIDS.U21-06.CLLTIM",authors:[{author: {firstnames: "Carsten Utoft", lastname: "Niemann", email: "carsten.utoft.niemann@regionh.dk",},},{author: {firstnames: "Rudi", lastname: "Agius", email: "rudi.agius@regionh.dk",},},],scores:{ document: {score:"1",comment:"None",evaluator:{entityType:"None",entityName:"None",contactName:"None",contactEmail:"None",},},fairness: {score:"?",comment:"None",evaluator:{entityType:"None",entityName:"None",contactName:"None",contactEmail:"None",},},magnitude: {score:"3",comment:"None",evaluator:{entityType:"None",entityName:"None",contactName:"None",contactEmail:"None",},},synthetic: {score:"E",comment:"None",evaluator:{entityType:"None",entityName:"None",contactName:"None",contactEmail:"None",},}, },thematic:{ filename:"thematic.jpg", },abstract:"Infections are the leading cause of mortality in CLL. Risk of Infection is increased upon CLL treatment and currently we have no model that is able to predict risk of infection upon CLL treatment. The dataset created puts together various sources of time-series electronic health records on CLL patients in Denmark. This also includes outcome on death, treatment and infection. Using this data set we aim to both model risk of infection upon CLL treatment and uncover risk factors responsible for low immune function and duration of treatment response upon different treatment regimens.",usecases:[{usecase: "None",},],research:{main:"Predict risk of infection (blood culture drawn) and chance of treatment free survival 4 years from start of first CLL treatment.",secondary:"Group patients according to phenotype (unsupervised clustering) and detect outcomes correlated with these groups. Develop meta learning approaches to adapt and validate these findings to other diseases/cohorts."},figures:[],subsetAssociations:{filename: "subset.jpg",legend:"Eight subsets related by pseudonymized patient identifiers.",},version: { scores: "1", description: "1", questionnaire: "1", subsets: "1", synthetic: "1", },provenance: { template: { commit: "70198f", tag: "v0.2-alpha", }, specification: { commit: "758194", tag: "v0.1-alpha", }, },categories:[{category:{
+id:"1",
+name:"Motivation",
+code:"M",
+description:"The questions in this category are primarily intended to encourage dataset creators to clearly articulate their reasons for creating the dataset and to promote transparency about funding interests.",
+entries:[
+{entry: {id:"1", answer:"Infections are the leading cause of mortality in CLL. Risk of Infection is increased upon CLL treatment and currently we have no model that is able to predict risk of infection upon CLL treatment. The dataset created puts together various sources of time-series electronic health records on CLL patients in Denmark. This also includes outcome on death, treatment and infection. Using this data set we aim to both model risk of infection upon CLL treatment and uncover risk factors responsible for low immune function and duration of treatment response upon different treatment regimens ", by:"", on:"", question:"For what purpose was the dataset created?", help:"Was there a specific task in mind? Was there a specific gap that needed to be filled? Please provide a description."}},
+{entry: {id:"2", answer:"Dataset was created by the CLL Laboratory at Rigshospitalet, Copenhagen University Hospital using data from the national CLL registry and PERSIMUNE data warehouse.", by:"", on:"", question:"Who created the dataset (e.g., which team, research group) and on behalf of which entity (e.g., company, institution, organization)?", help:"None"}},
+{entry: {id:"3", answer:"Novo Nordisk Foundation (grant NNF16OC0019302) and Danish Cancer Society", by:"", on:"", question:"Who funded the creation of the dataset?", help:"If there is an associated grant, please provide the name of the grantor and the grant name and number."}},
+{entry: {id:"4", answer:"None", by:"", on:"", question:"Any other comments?", help:"None"}},
+]}},
+{category:{
+id:"2",
+name:"Composition",
+code:"C",
+description:"Most of these questions are intended to provide dataset consumers with the information they need to make informed decisions about using the dataset for specific tasks. The answers to some of these questions reveal information about compliance with the EU’s General Data Protection Regulation (GDPR) or comparable regulations in other jurisdictions.",
+entries:[
+{entry: {id:"1", answer:"Dataset represents electronic health record data from various data sources collected on CLL Patients in Denmark. Baseline: Each instance is a single CLL patient and their set of CLL prognostic factor variables taken around time of CLL diagnosis CLL Registry: Each instance is a single CLL patient and extracted from the National CLL Registry that contains information on several clinically relevant outcome like treatment and death. Treatment Outcome data contains information on line of CLL treatment and type of CLL treatment. Each instance is a line of treatment – hence multiple instances for patients with multiple lines of treatment. For the following each instance is one patient event – hence multiple instances for patients with multiple events – where events are a diagnosis, pathology, laboratory test, prescription, lab culture. Diagnosis: Historical data on previous patient diagnosis - not necessarily those related to CLL. Laboratory: Laboratory tests – not necessarily related to CLL. Pathology: Historical data on previous patient pathology - not necessarily related to CLL. Laboratory Cultures: data for different type of cultures taken for a given patient – thereby holding information on CLL related infections. Medications: Historical data on prescribed medications - not necessarily related to CLL", by:"", on:"", question:"What do the instances that comprise the dataset represent (e.g., samples, images, people)?", help:"Are there multiple types of instances (e.g., samples, images, and people), interactions (e.g., nodes and edges), resolutions (e.g., genetic data, single cell expression vs. tissue expression, cell counts, different image technologies, etc.)? Please provide a description."}},
+{entry: {id:"2", answer:"Baseline: 4999 (each instance is a unique patient); CLL Registry:4999 (each instance is a unique patient); Treatment Outcome:1996 (No, or multiple instances for each patient possible); Diagnosis:147197 (No, or multiple instances for each patient possible); Laboratory:4226248 (No, or multiple instances for each patient possible); Pathology:199337 (No, or multiple instances for each patient possible); Laboratory Cultures:84299 (No, or multiple instances for each patient possible); Medications:1098273 (No, or multiple instances for each patient possible)", by:"", on:"", question:"How many instances are there in total?", help:"Provide an exact integer value for each type mentioned in question C1."}},
+{entry: {id:"3", answer:"CLL Registry contains data on all CLL patient in Denmark. Remaining datasets have missingness both at random and not at random.", by:"", on:"", question:"Does the dataset contain all possible instances or is it a sample (not necessarily random) of instances from a larger set?", help:"f the dataset is a sample, then what is the larger set? Is the sample representative of the larger set (e.g., geographic coverage)? If so, please describe how this representativeness was validated/verified. If it is not representative of the larger set, please describe why not (e.g., an active decision to cover a more diverse range of instances, because instances were withheld or unavailable)."}},
+{entry: {id:"4", answer:"Each data instance is an instance of a patient record – hence raw data. A single patient is therefore spread across several instances in different datasets.  For example, a particular laboratory test, or a single prescription of a medication, will hold an instance each. Features must then be derived from these raw data to generate just a single-row for each patient as is typical in a machine learning dataset.", by:"", on:"", question:"What data does each instance consist of?", help:"“Raw” data (e.g., unprocessed text or images) or features? In either case, please provide a description."}},
+{entry: {id:"5", answer:"No, as each instance is raw data. Outcomes may be derived from CLL Registry, Treatment Outcome, and Laboratory Cultures datasets.", by:"", on:"", question:"Is there a label, target, or outcome (e.g., mortality) associated with each instance?", help:"If so, please provide a description and indicate its actual presence within the dataset or whether it is represented by a proxy or compounded (e.g., a multi-cause event)."}},
+{entry: {id:"6", answer:"No information has been redacted. Missing information can be missing at random and not at random.", by:"", on:"", question:"Is any information missing from individual instances?", help:"If so, please provide a description, explaining why this information is missing (e.g., because it was unavailable). This does not include intentionally removed information, but might include, e.g., redacted text."}},
+{entry: {id:"7", answer:"Yes. The patient id links different instances in a given dataset to a single patient, and similarly instances from other datasets related to the same patient.", by:"", on:"", question:"Are relationships between individual instances made explicit (e.g., familial links, or samples derived from the same patient or same exposure)?", help:"If so, please describe how these relationships are made explicit."}},
+{entry: {id:"8", answer:"No", by:"", on:"", question:"Are there recommended data splits (e.g., training, development/validation, testing)?", help:"If so, please provide a description of these splits, explaining the rationale behind them."}},
+{entry: {id:"9", answer:"Yes. There are potential duplicates and some of the dates and times may also have errors. Errors may also be present in laboratory values.", by:"", on:"", question:"Are there any errors, sources of noise, or redundancies in the dataset?", help:"If so, please provide a description."}},
+{entry: {id:"10", answer:"Yes. Datasets is extracted from the National CLL registry and PERSIMUNE data warehouse and continuously updated.", by:"", on:"", question:"Is the dataset self-contained, or does it link to or otherwise rely on external resources (e.g., websites, public databases, other datasets and/or private silos)?", help:"If it links to or relies on external resources, a) are there guarantees that they will exist, and remain constant, over time; b) are there official archival versions of the complete dataset (i.e., including the external resources as they existed at the time the dataset was created); c) are there any restrictions (e.g., licenses, fees) associated with any of the external resources that might apply to a future user? Please provide descriptions of all external resources and any restrictions associated with them, as well as links or other access points, as appropriate."}},
+{entry: {id:"11", answer:"Yes", by:"", on:"", question:"Does the dataset contain data that might be considered confidential (e.g., data that is protected by legal privilege or by doctor-patient confidentiality, data that includes the content of individuals’ non-public communications)?", help:"If so, please provide a description."}},
+{entry: {id:"12", answer:"No", by:"", on:"", question:"Does the dataset contain data that, if viewed directly, might be offensive, insulting, threatening, or might otherwise cause anxiety?", help:"If so, please describe why."}},
+{entry: {id:"13", answer:"DIRECT RELATION TO PEOPLE", by:"", on:"", question:"Does the dataset not relate to people (e.g., animals, cell lines, environment)?", help:"A short answer is sufficient. If no relation to people, you may skip the remaining questions in this section."}},
+{entry: {id:"14", answer:"Age and gender are available and hence any information may be stratified according to these variables", by:"", on:"", question:"Does the dataset identify any subpopulations (e.g., by age, gender, etc.)?", help:"If so, please describe how these subpopulations are identified and provide a description of their respective distributions within the dataset."}},
+{entry: {id:"15", answer:"Patient IDs are pseudonymized in all datasets. It is potentially possible to identify individuals indirectly in combination with other data.", by:"", on:"", question:"Is it possible to identify individuals (i.e., one or more natural persons), either directly or indirectly (i.e., in combination with other data) from the dataset?", help:"If so, please describe how."}},
+{entry: {id:"16", answer:"No", by:"", on:"", question:"Does the dataset contain data that might be considered sensitive in any way (e.g., data that reveals racial or ethnic origins, sexual orientations, religious beliefs, political opinions or union memberships, or locations; financial or health data; biometric or genetic data; forms of government identification, such as social security numbers; criminal history)?", help:"If so, please provide a description."}},
+{entry: {id:"17", answer:"None", by:"", on:"", question:"Any other comments?", help:"None"}},
+]}},
+{category:{
+id:"3",
+name:"Collection Process",
+code:"L",
+description:"If possible, dataset creators should read through these questions prior to any data collection to flag potential issues and then provide answers once collection is complete. In addition to the goals of the prior category, the answers to questions here may provide information that allow others to reconstruct the dataset without access to it.",
+entries:[
+{entry: {id:"1", answer:"None", by:"", on:"", question:"How was the data associated with each instance acquired?", help:"Was the data directly observable (e.g., raw text, instrument measurements), reported by subjects/physicians (e.g., survey responses), or indirectly inferred/derived from other data (e.g., part-of-speech tags, model-based guesses, scores, etc.)? If data was reported by subjects or indirectly inferred/derived from other data, was the data validated/verified? If so, please describe how."}},
+{entry: {id:"2", answer:"None", by:"", on:"", question:"What mechanisms or procedures were used to collect the data (e.g., hardware apparatus or sensor, manual human curation, software program, software API)?", help:"How were these mechanisms or procedures validated?"}},
+{entry: {id:"3", answer:"None", by:"", on:"", question:"If the dataset is a sample from a larger set, what was the sampling strategy (e.g., deterministic, probabilistic with specific sampling probabilities)?", help:"Please describe."}},
+{entry: {id:"4", answer:"None", by:"", on:"", question:" Who was involved in the data collection process (e.g., students, crowdworkers, contractors) and how were they compensated (e.g., salaried, immaterial through prizes / authorship / etc) and how much (e.g., according to competitive scales mandated by [insert body or institution])?", help:"None"}},
+{entry: {id:"5", answer:"None", by:"", on:"", question:"Over what timeframe was the data collected?", help:"Does this timeframe match the creation timeframe of the data associated with the instances (e.g., recent data from old biobanked samples, or recent data dump from a 5-year-old registry)? If not, please describe the time frame in which the data associated with the instances was created."}},
+{entry: {id:"6", answer:"None", by:"", on:"", question:"Were any ethical review processes conducted (e.g., by an institutional review board)?", help:"If so, please provide a description of these review processes, including the outcomes, as well as a link or other access point to any supporting documentation."}},
+{entry: {id:"7", answer:"None", by:"", on:"", question:"Does the dataset not relate to people (e.g., animals, cell lines, environment)?", help:"A short answer is sufficient. If no relation to people, you may skip the remaining questions in this section."}},
+{entry: {id:"8", answer:"None", by:"", on:"", question:"Did you collect the data from the individuals in question directly, or obtain it via third parties or other sources (e.g., websites)?", help:"Please explain."}},
+{entry: {id:"9", answer:"None", by:"", on:"", question:"Were the individuals in question notified about the data collection?", help:"If so, please describe (or show with screenshots or other information) how notice was provided, and provide a link or other access point to, or otherwise reproduce, the exact language of the notification itself."}},
+{entry: {id:"10", answer:"None", by:"", on:"", question:"Did the individuals in question consent to the collection and use of their data?", help:"If so, please describe (or show with screenshots or other information) how consent was requested and provided, and provide a link or other access point to, or otherwise reproduce, the exact language to which the individuals consented."}},
+{entry: {id:"11", answer:"None", by:"", on:"", question:" If consent was obtained, were the consenting individuals provided with a mechanism to revoke their consent in the future or for certain uses?", help:"If so, please provide a description, as well as a link or other access point to the mechanism (if appropriate)."}},
+{entry: {id:"12", answer:"None", by:"", on:"", question:"Has an analysis of the potential impact of the dataset and its use on data subjects (e.g., a data protection impact analysis) been conducted?", help:"If so, please provide a description of this analysis, including the outcomes, as well as a link or other access point to any supporting documentation."}},
+{entry: {id:"13", answer:"None", by:"", on:"", question:"Any other comments?", help:"None"}},
+]}},
+{category:{
+id:"4",
+name:"Preprocessing, Cleaning, Labling",
+code:"P",
+description:"If possible, dataset creators should read through these questions prior to any preprocessing, cleaning, or labeling and then provide answers once these tasks are complete. The questions in this category are intended to provide dataset consumers with the information they need to determine whether the “raw” data has been processed in ways that are compatible with their chosen tasks.",
+entries:[
+{entry: {id:"1", answer:"None", by:"", on:"", question:"Was any preprocessing/cleaning/labeling of the data done (e.g., discretization or bucketing, tokenization, part-of-speech tagging, SIFT feature extraction, removal of instances, processing of missing values)?", help:"If so, please provide a description. If not, you may skip the remainder of the questions in this section."}},
+{entry: {id:"2", answer:"None", by:"", on:"", question:"Was the “raw” data saved in addition to the preprocessed/cleaned/labeled data (e.g., to support unanticipated future uses)?", help:"If so, is it available and needs to be done to gain access? If open without restriction then please describe a means to access this “raw” data."}},
+{entry: {id:"3", answer:"None", by:"", on:"", question:"Is the software used to preprocess/clean/label the instances available?", help:"If so, please provide a link or other access point and describe with enough detail so that others might reproduce it. If a custom script was used will you include it within the MAIDS repository or otherwise make it available?"}},
+{entry: {id:"4", answer:"None", by:"", on:"", question:"Any other comments?", help:"None"}},
+]}},
+{category:{
+id:"5",
+name:"Uses",
+code:"U",
+description:"These questions are intended to encourage dataset creators to reflect on the tasks for which the dataset should and should not be used. By explicitly highlighting these tasks, dataset creators can help dataset consumers to make informed decisions, thereby avoiding potential risks or harm.",
+entries:[
+{entry: {id:"1", answer:"None", by:"", on:"", question:"Has the dataset been used for any tasks already?", help:"hers determine the value of this dataset by example."}},
+{entry: {id:"2", answer:"None", by:"", on:"", question:"Is there a repository that links to any or all papers or systems that use the dataset?", help:"If so, please provide a link or other access point. Will you compile such a list and make it available in the MAIDS repository?"}},
+{entry: {id:"3", answer:"None", by:"", on:"", question:"What (other) tasks could the dataset be used for?", help:"Please provide as much inspiration as you can. Distinguish between tasks the dataset is ideal for versus those tasks where the dataset is not entirely suited. Describe why the dataset might not be suitable "}},
+{entry: {id:"4", answer:"None", by:"", on:"", question:"Is there anything about the composition of the dataset or the way it was collected and preprocessed/cleaned/labeled that might impact future uses?", help:"For example, is there anything that a future user might need to know to avoid uses that could result in unfair treatment of individuals or groups (e.g., stereotyping, quality of service issues) or other undesirable harms (e.g., financial harms, legal risks) If so, please provide a description. Is there anything a future user could do to mitigate these undesirable harms?"}},
+{entry: {id:"5", answer:"None", by:"", on:"", question:"Are there tasks for which the dataset should not be used?", help:"If so, please provide a description."}},
+{entry: {id:"6", answer:"None", by:"", on:"", question:"Any other comments?", help:"None"}},
+]}},
+{category:{
+id:"6",
+name:"Distribution",
+code:"D",
+description:"Dataset creators should provide answers to these questions prior to distributing the dataset either internally within the entity on behalf of which the dataset was created or externally to third parties.",
+entries:[
+{entry: {id:"1", answer:"None", by:"", on:"", question:"Will the dataset be distributed to third parties outside of the entity (e.g., company, institution, organization) on behalf of which the dataset was created", help:"If so, please provide a description. If not, then disregard the rest of the questions."}},
+{entry: {id:"2", answer:"None", by:"", on:"", question:"How will the dataset be distributed (e.g., tarball on website, API, GitHub)?", help:"Does the dataset have a digital object identifier (DOI)?"}},
+{entry: {id:"3", answer:"None", by:"", on:"", question:"When will the dataset be distributed?", help:"A cautious response is more useful than an optimistic one."}},
+{entry: {id:"4", answer:"None", by:"", on:"", question:"Will the dataset be distributed under a copyright or other intellectual property (IP) license, and/or under applicable terms of use (ToU)?", help:"If so, please describe this license and/or ToU, and provide a link or other access point to, or otherwise reproduce, any relevant licensing terms or ToU, as well as any fees associated with these restrictions."}},
+{entry: {id:"5", answer:"None", by:"", on:"", question:"Have any third-parties imposed IP-based or other restrictions on the data associated with the instances?", help:"If so, please describe these restrictions, and provide a link or other access point to, or otherwise reproduce, any relevant licensing terms, as well as any fees associated with these restrictions."}},
+{entry: {id:"6", answer:"None", by:"", on:"", question:"Do any export controls or other regulatory restrictions apply to the dataset or to individual instances?", help:"If so, please describe these restrictions, and provide a link or other access point to, or otherwise reproduce, any supporting documentation."}},
+{entry: {id:"7", answer:"None", by:"", on:"", question:"Any other comments?", help:"None"}},
+]}},
+{category:{
+id:"7",
+name:"Maintenance",
+code:"T",
+description:"As with the previous category, dataset creators should provide answers to these questions prior to distributing the dataset. These questions are intended to encourage dataset creators to plan for dataset maintenance and communicate this plan with dataset consumers.",
+entries:[
+{entry: {id:"1", answer:"None", by:"", on:"", question:"Who is supporting/hosting/maintaining the dataset?", help:"Please be as thorough as possible."}},
+{entry: {id:"2", answer:"None", by:"", on:"", question:"How can the owner/curator/manager of the dataset be contacted (e.g., email address)?", help:"None"}},
+{entry: {id:"3", answer:"None", by:"", on:"", question:"Is there an erratum?", help:"If so, please provide a link or other access point."}},
+{entry: {id:"4", answer:"None", by:"", on:"", question:"Will the dataset be updated (e.g., to correct labeling errors, add new instances, delete instances)?", help:"If so, please describe how often, by whom, and how updates will be communicated to users (e.g., mailing list, GitHub)?"}},
+{entry: {id:"5", answer:"None", by:"", on:"", question:"If the dataset relates to people, are there applicable limits on the retention of the data associated with the instances (e.g., were individuals in question told that their data would be retained for a fixed period of time and then deleted)?", help:"If so, please describe these limits and explain how they will be enforced."}},
+{entry: {id:"6", answer:"None", by:"", on:"", question:"Will older versions of the dataset continue to be supported/hosted/maintained?", help:"If so, please describe how. If not, please describe how its obsolescence will be communicated to users."}},
+{entry: {id:"7", answer:"None", by:"", on:"", question:"If others want to extend/augment/build on/contribute to the dataset, is there a mechanism for them to do so?", help:"If so, please provide a description. Will these contributions be validated/verified? If so, please describe how. If not, why not? Is there a process for communicating/distributing these contributions to other users? If so, please provide a description."}},
+{entry: {id:"8", answer:"None", by:"", on:"", question:"Any other comments?", help:"None"}},
+]}},
+],definitions:[],subsets:[{subset: {
+id:"1",
+name:"Baseline",
+updated:"2019-11-22",
+modality:"TABULAR",
+format:"CSV",
+size:"4999",
+featureCount:"20",
+parentid:"0",
+covmat:"None",
+modsys:"None",
+purpose:"Contains CLL prognostic factor variables taken around time of diagnosis",
+link:"",
+features:[
+{feature: {id:"1",date:"None",name:"pid",values:"0..inf; integer",meaningNaNullNone:"Not possible in format.",meaningZero:"Zero is first patient",meaningBlankVoid:"Not possible in format.",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"Pseudonymized patient identifier",purpose:"Needed to link different cohorts",encoding:"None"}},
+{feature: {id:"2",date:"None",name:"Gender",values:"Male,Female",meaningNaNullNone:"No NA, NULL, or NONE",meaningZero:"No zeros",meaningBlankVoid:"Not possible in format.",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"Gender assigned at birth based on physical characteristics.",purpose:"Often a proxy for other biological features. It might be used to stratify and control for batch effects or examined directly as a covariate of interest.",encoding:"None"}},
+{feature: {id:"3",date:"None",name:"Age",values:"0..inf; integer",meaningNaNullNone:"No NA, NULL, or NONE",meaningZero:"No zeros",meaningBlankVoid:"Not possible in format.",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"yrs",definition:"Age at time of CLL diagnosis",purpose:"Often a proxy for other biological features. It might be used to stratify and control for batch effects or examined directly as a covariate of interest.",encoding:"None"}},
+{feature: {id:"4",date:"None",name:"Binet",values:"A,B,C",meaningNaNullNone:"No NA, NULL, or NONE",meaningZero:"No zeros",meaningBlankVoid:"Not possible in format.",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"number of affected lymphoid tissue groups",purpose:"CLL Prognostic Factor",encoding:"None"}},
+{feature: {id:"5",date:"None",name:"ECOG.PS",values:"0,1,2,3,4",meaningNaNullNone:"nan means test not taken or inconclusive",meaningZero:"0 part of score",meaningBlankVoid:"Not possible in format.",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"General well being score",purpose:"CLL Prognostic Factor",encoding:"None"}},
+{feature: {id:"6",date:"None",name:"CLL.IPI",values:"Low, Intermediate,High,Very High",meaningNaNullNone:"nan means that not all CLL-IPI factors are available",meaningZero:"0 part of score",meaningBlankVoid:"Not possible in format.",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"CLL Risk Score",purpose:"CLL Prognostic Factor",encoding:"None"}},
+{feature: {id:"7",date:"None",name:"B2M",values:"<4.0 mg/L, >4.0 mg/L",meaningNaNullNone:"nan means test not taken or inconclusive",meaningZero:"No zeros",meaningBlankVoid:"Not possible in format.",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"beta2-microglobulin levels",purpose:"CLL Prognostic Factor",encoding:"None"}},
+{feature: {id:"8",date:"None",name:"IGHV",values:"Mutated, unmutated",meaningNaNullNone:"nan means test not taken or inconclusive",meaningZero:"No zeros",meaningBlankVoid:"Not possible in format.",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"Immunoglobulin heavy chain variable region mutated status",purpose:"CLL Prognostic Factor",encoding:"None"}},
+{feature: {id:"9",date:"None",name:"FISH.status",values:"Del13q,Normal,Tri12,Del17p",meaningNaNullNone:"nan means that not all FISH factors are available",meaningZero:"No zeros",meaningBlankVoid:"Not possible in format.",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"Chromosomal abnormalities in CLL",purpose:"CLL Prognostic Factor",encoding:"None"}},
+{feature: {id:"10",date:"None",name:"DEL13Q",values:"Yes,No",meaningNaNullNone:"nan means test not taken or inconclusive",meaningZero:"No zeros",meaningBlankVoid:"Not possible in format.",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"Chromosomal abnormalities in CLL",purpose:"CLL Prognostic Factor",encoding:"None"}},
+{feature: {id:"11",date:"None",name:"TRISOM12",values:"Yes,No",meaningNaNullNone:"nan means test not taken or inconclusive",meaningZero:"No zeros",meaningBlankVoid:"Not possible in format.",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"Chromosomal abnormalities in CLL",purpose:"CLL Prognostic Factor",encoding:"None"}},
+{feature: {id:"12",date:"None",name:"DEL11Q",values:"Yes,No",meaningNaNullNone:"nan means test not taken or inconclusive",meaningZero:"No zeros",meaningBlankVoid:"Not possible in format.",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"Chromosomal abnormalities in CLL",purpose:"CLL Prognostic Factor",encoding:"None"}},
+{feature: {id:"13",date:"None",name:"DEL17p",values:"Yes,No",meaningNaNullNone:"nan means test not taken or inconclusive",meaningZero:"No zeros",meaningBlankVoid:"Not possible in format.",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"Chromosomal abnormalities in CLL",purpose:"CLL Prognostic Factor",encoding:"None"}},
+{feature: {id:"14",date:"None",name:"ZAP70",values:"Yes,No",meaningNaNullNone:"nan means test not taken or inconclusive",meaningZero:"No zeros",meaningBlankVoid:"Not possible in format.",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"Zeta-chain-associated protein kinase 70 (ZAP-70) expression",purpose:"CLL Prognostic Factor",encoding:"None"}},
+{feature: {id:"15",date:"None",name:"CD38",values:"Yes,No",meaningNaNullNone:"nan means test not taken or inconclusive",meaningZero:"No zeros",meaningBlankVoid:"Not possible in format.",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"Expression of CD38 by CLL cells",purpose:"CLL Prognostic Factor",encoding:"None"}},
+{feature: {id:"16",date:"None",name:"Anemia",values:"Yes,No",meaningNaNullNone:"nan means test not taken or inconclusive",meaningZero:"No zeros",meaningBlankVoid:"Not possible in format.",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"Low red blood cell count",purpose:"CLL Prognostic Factor",encoding:"None"}},
+{feature: {id:"17",date:"None",name:"Thrombopenia",values:"Yes,No",meaningNaNullNone:"nan means test not taken or inconclusive",meaningZero:"No zeros",meaningBlankVoid:"Not possible in format.",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"Low platelet count",purpose:"CLL Prognostic Factor",encoding:"None"}},
+{feature: {id:"18",date:"None",name:"Weight.loss",values:"Yes,No",meaningNaNullNone:"nan means test not taken or inconclusive",meaningZero:"No zeros",meaningBlankVoid:"Not possible in format.",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"Weight Loss",purpose:"CLL Prognostic Factor",encoding:"None"}},
+{feature: {id:"19",date:"None",name:"Fever",values:"Yes,No",meaningNaNullNone:"nan means test not taken or inconclusive",meaningZero:"No zeros",meaningBlankVoid:"Not possible in format.",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"Fever",purpose:"CLL Prognostic Factor",encoding:"None"}},
+{feature: {id:"20",date:"None",name:"Night.sweat",values:"Yes,No",meaningNaNullNone:"nan means test not taken or inconclusive",meaningZero:"No zeros",meaningBlankVoid:"Not possible in format.",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"Night Sweats",purpose:"CLL Prognostic Factor",encoding:"None"}},
+]}},
+{subset: {
+id:"2",
+name:"CLL Registry",
+updated:"2019-11-22",
+modality:"TABULAR",
+format:"CSV",
+size:"4999",
+featureCount:"11",
+parentid:"0",
+covmat:"None",
+modsys:"None",
+purpose:"Patient information relevant for generaiton of outcomes related to treatment and death",
+link:"",
+features:[
+{feature: {id:"1",date:"None",name:"pid",values:"0..inf; integer",meaningNaNullNone:"Not possible in format.",meaningZero:"Zero is first patient",meaningBlankVoid:"Not possible in format.",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"Pseudonymized patient identifier",purpose:"Needed to link different cohorts",encoding:"None"}},
+{feature: {id:"2",date:"None",name:"Date_of_birth",values:"YYYY-MM-DD",meaningNaNullNone:"No NA, NULL, or NONE",meaningZero:"No zeros",meaningBlankVoid:"Not possible in format.",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"Date of Birth",purpose:"Needed to calculate age at different time-points",encoding:"None"}},
+{feature: {id:"3",date:"None",name:"Date_diag",values:"YYYY-MM-DD",meaningNaNullNone:"No NA, NULL, or NONE",meaningZero:"No zeros",meaningBlankVoid:"Not possible in format.",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"Date of CLL Diagnosis",purpose:"Baseline variables calculated around time of diagnosis",encoding:"None"}},
+{feature: {id:"4",date:"None",name:"Date_treatment",values:"YYYY-MM-DD",meaningNaNullNone:"Null Means no treatment given or",meaningZero:"No zeros",meaningBlankVoid:"Not possible in format.",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"Date of CLL Treatment",purpose:"Needed for outcome definition",encoding:"None"}},
+{feature: {id:"5",date:"None",name:"Date_DeathFollowup",values:"YYYY-MM-DD",meaningNaNullNone:"No NA, NULL, or NONE",meaningZero:"No zeros",meaningBlankVoid:"Not possible in format.",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"Date of Death or Last Follow Up",purpose:"Needed for outcome definition",encoding:"None"}},
+{feature: {id:"6",date:"None",name:"Date_Death",values:"YYYY-MM-DD",meaningNaNullNone:"nan Means patient is still alive",meaningZero:"No zeros",meaningBlankVoid:"Not possible in format.",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"Date of Death",purpose:"Needed for outcome definition",encoding:"None"}},
+{feature: {id:"7",date:"None",name:"Date_PFS",values:"YYYY-MM-DD",meaningNaNullNone:"No NA, NULL, or NONE",meaningZero:"No zeros",meaningBlankVoid:"Not possible in format.",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"Last Date of Progression Free Survival",purpose:"Needed for outcome definition",encoding:"None"}},
+{feature: {id:"8",date:"None",name:"Progression",values:"0,1",meaningNaNullNone:"No NA, NULL, or NONE",meaningZero:"Zero means no progression",meaningBlankVoid:"Not possible in format.",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"Whether CLL Disease Progressed",purpose:"Needed for outcome definition",encoding:"None"}},
+{feature: {id:"9",date:"None",name:"TimeTo_PFS",values:"0..inf; integer",meaningNaNullNone:"No NA, NULL, or NONE",meaningZero:"Zero is time to progression",meaningBlankVoid:"Not possible in format.",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"Days",definition:"Time to Progression Free Survival",purpose:"Needed for outcome definition",encoding:"None"}},
+{feature: {id:"10",date:"None",name:"Treatment",values:"0,1",meaningNaNullNone:"No NA, NULL, or NONE",meaningZero:"Zero is no treatment",meaningBlankVoid:"Not possible in format.",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"Whether Patient Received CLL Treatment",purpose:"Needed for outcome definition",encoding:"None"}},
+{feature: {id:"11",date:"None",name:"TimeTo_Treatment",values:"0..inf; integer",meaningNaNullNone:"No NA, NULL, or NONE",meaningZero:"Zero is time to treatment",meaningBlankVoid:"Not possible in format.",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"Days",definition:"Time to CLL Treatment",purpose:"Needed for outcome definition",encoding:"None"}},
+]}},
+{subset: {
+id:"3",
+name:"Treatment Outcome",
+updated:"2020-02-30",
+modality:"TABULAR",
+format:"CSV",
+size:"1996",
+featureCount:"5",
+parentid:"0",
+covmat:"None",
+modsys:"None",
+purpose:"Treatment outcome information that includdes lines of treament and type of treament",
+link:"",
+features:[
+{feature: {id:"1",date:"None",name:"pid",values:"0..inf; integer",meaningNaNullNone:"Not possible in format.",meaningZero:"Zero is first patient",meaningBlankVoid:"Not possible in format.",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"Pseudonymized patient identifier",purpose:"Needed to link different cohorts",encoding:"None"}},
+{feature: {id:"2",date:"None",name:"line",values:"1..8; integer",meaningNaNullNone:"No NA, NULL, or NONE",meaningZero:"No zeros",meaningBlankVoid:"Not possible in format.",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"Line of treatment",purpose:"Needed for outcome definition",encoding:"None"}},
+{feature: {id:"3",date:"None",name:"date_treatment",values:"YYYY-MM-DD",meaningNaNullNone:"No NA, NULL, or NONE",meaningZero:"No zeros",meaningBlankVoid:"Not possible in format.",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"Start date for given line of treatment",purpose:"Needed for outcome definition",encoding:"None"}},
+{feature: {id:"4",date:"None",name:"chemotherapy",values:"Many;string",meaningNaNullNone:"No NA, NULL, or NONE",meaningZero:"No zeros",meaningBlankVoid:"Not possible in format.",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"Treatment included chemotherapy",purpose:"Needed for outcome definition",encoding:"None"}},
+{feature: {id:"5",date:"None",name:"immunotherapy",values:"Many;string",meaningNaNullNone:"nan means immunotherapy not given",meaningZero:"No zeros",meaningBlankVoid:"Not possible in format.",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"Treatment included immunotherapy",purpose:"Needed for outcome definition",encoding:"None"}},
+]}},
+{subset: {
+id:"4",
+name:"Diagnosis",
+updated:"2020-02-30",
+modality:"TABULAR",
+format:"CSV",
+size:"147197",
+featureCount:"4",
+parentid:"0",
+covmat:"None",
+modsys:"None",
+purpose:"Historical data on previous patient diagnosis - not necessarily related to CLL",
+link:"",
+features:[
+{feature: {id:"1",date:"None",name:"pid",values:"0..inf; integer",meaningNaNullNone:"Not possible in format.",meaningZero:"Zero is first patient",meaningBlankVoid:"Not possible in format.",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"Pseudonymized patient identifier",purpose:"Needed to link different cohorts",encoding:"None"}},
+{feature: {id:"2",date:"None",name:"DIAG_CODE",values:"Many;string",meaningNaNullNone:"No NA, NULL, or NONE",meaningZero:"No zeros",meaningBlankVoid:"Not possible in format.",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"Diagnosis code",purpose:"Potential Feature",encoding:"None"}},
+{feature: {id:"3",date:"None",name:"DIAG_COURSE_D",values:"YYYY-MM-DD",meaningNaNullNone:"No NA, NULL, or NONE",meaningZero:"No zeros",meaningBlankVoid:"Not possible in format.",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"Date of diagnosis code",purpose:"Potential Feature",encoding:"None"}},
+{feature: {id:"4",date:"None",name:"DIAG_COURSE_T",values:"HH-MM-SS",meaningNaNullNone:"No NA, NULL, or NONE",meaningZero:"No zeros",meaningBlankVoid:"Not possible in format.",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"Time in day of diagnosis code",purpose:"Potential Feature",encoding:"None"}},
+]}},
+{subset: {
+id:"5",
+name:"Laboratory",
+updated:"2020-02-30",
+modality:"TABULAR",
+format:"CSV",
+size:"4226248",
+featureCount:"4",
+parentid:"0",
+covmat:"None",
+modsys:"None",
+purpose:"Laboratory tests data - not necessarily related to CLL",
+link:"",
+features:[
+{feature: {id:"1",date:"None",name:"pid",values:"0..inf; integer",meaningNaNullNone:"Not possible in format.",meaningZero:"No zeros",meaningBlankVoid:"Not possible in format.",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"Pseudonymized patient identifier",purpose:"Needed to link different cohorts",encoding:"None"}},
+{feature: {id:"2",date:"None",name:"LAB_ID",values:"Many;string",meaningNaNullNone:"No NA, NULL, or NONE",meaningZero:"No zeros",meaningBlankVoid:"Not possible in format.",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"Name of Laboratory Test",purpose:"Potential Feature",encoding:"None"}},
+{feature: {id:"3",date:"None",name:"LAB_D",values:"YYYY-MM-DD",meaningNaNullNone:"No NA, NULL, or NONE",meaningZero:"No zeros",meaningBlankVoid:"Not possible in format.",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"Laboratory Test Date",purpose:"Potential Feature",encoding:"None"}},
+{feature: {id:"4",date:"None",name:"LAB_T",values:"HH-MM-SS",meaningNaNullNone:"No NA, NULL, or NONE",meaningZero:"No zeros",meaningBlankVoid:"Not possible in format.",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"Laboratory Test Time in day",purpose:"Potential Feature",encoding:"None"}},
+]}},
+{subset: {
+id:"6",
+name:"Pathology",
+updated:"2020-02-30",
+modality:"TABULAR",
+format:"CSV",
+size:"199337",
+featureCount:"4",
+parentid:"0",
+covmat:"None",
+modsys:"None",
+purpose:"Historical data on previous patient pathology - not necessarily related to CLL",
+link:"",
+features:[
+{feature: {id:"1",date:"None",name:"pid",values:"0..inf; integer",meaningNaNullNone:"Not possible in format.",meaningZero:"No zeros",meaningBlankVoid:"Not possible in format.",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"Pseudonymized patient identifier",purpose:"Needed to link different cohorts",encoding:"None"}},
+{feature: {id:"2",date:"None",name:"PAT_CODE",values:"Many;string",meaningNaNullNone:"No NA, NULL, or NONE",meaningZero:"No zeros",meaningBlankVoid:"Not possible in format.",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"Pathology Code",purpose:"Potential Feature",encoding:"None"}},
+{feature: {id:"3",date:"None",name:"PAT_D",values:"YYYY-MM-DD",meaningNaNullNone:"No NA, NULL, or NONE",meaningZero:"No zeros",meaningBlankVoid:"Not possible in format.",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"Pathology Date",purpose:"Potential Feature",encoding:"None"}},
+{feature: {id:"4",date:"None",name:"PAT_T",values:"HH-MM-SS",meaningNaNullNone:"No NA, NULL, or NONE",meaningZero:"No zeros",meaningBlankVoid:"Not possible in format.",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"Pathology time in day",purpose:"Potential Feature",encoding:"None"}},
+]}},
+{subset: {
+id:"7",
+name:"Laboratory Cultures",
+updated:"2020-02-30",
+modality:"TABULAR",
+format:"CSV",
+size:"84299",
+featureCount:"9",
+parentid:"0",
+covmat:"None",
+modsys:"None",
+purpose:"Laboratory culture data - necessarily for creating features and outcomes related to infections",
+link:"",
+features:[
+{feature: {id:"1",date:"None",name:"pid",values:"0..inf; integer",meaningNaNullNone:"Not possible in format.",meaningZero:"No zeros",meaningBlankVoid:"Not possible in format.",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"Pseudonymized patient identifier",purpose:"Needed to link different cohorts",encoding:"None"}},
+{feature: {id:"2",date:"None",name:"SAMPLE_NO",values:"0..inf; integer",meaningNaNullNone:"No NA, NULL, or NONE",meaningZero:"No zeros",meaningBlankVoid:"Not possible in format.",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"Sample Number",purpose:"Potential Feature & Needed for Outcome Definition ",encoding:"None"}},
+{feature: {id:"3",date:"None",name:"SAMPLE_MAT",values:"Many;string",meaningNaNullNone:"No NA, NULL, or NONE",meaningZero:"No zeros",meaningBlankVoid:"Not possible in format.",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"Category of Sample (blood, urine, etc)",purpose:"Potential Feature & Needed for Outcome Definition ",encoding:"None"}},
+{feature: {id:"4",date:"None",name:"SAMPLE_D",values:"YYYY-MM-DD",meaningNaNullNone:"No NA, NULL, or NONE",meaningZero:"No zeros",meaningBlankVoid:"Not possible in format.",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"Sample Date",purpose:"Potential Feature & Needed for Outcome Definition ",encoding:"None"}},
+{feature: {id:"5",date:"None",name:"SAMPLE_T",values:"HH-MM-SS",meaningNaNullNone:"No NA, NULL, or NONE",meaningZero:"No zeros",meaningBlankVoid:"Not possible in format.",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"Sample Time in Day",purpose:"Potential Feature & Needed for Outcome Definition ",encoding:"None"}},
+{feature: {id:"6",date:"None",name:"CULT_MAT_GROUP",values:"Many;string",meaningNaNullNone:"No NA, NULL, or NONE",meaningZero:"No zeros",meaningBlankVoid:"Not possible in format.",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"Category of lab culture",purpose:"Potential Feature & Needed for Outcome Definition ",encoding:"None"}},
+{feature: {id:"7",date:"None",name:"RESULT",values:"Many;string",meaningNaNullNone:"No NA, NULL, or NONE",meaningZero:"No zeros",meaningBlankVoid:"Not possible in format.",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"Result of lab culture",purpose:"Potential Feature & Needed for Outcome Definition ",encoding:"None"}},
+{feature: {id:"8",date:"None",name:"CULT_FIND",values:"0..inf; integer",meaningNaNullNone:"nan possibly missing at random",meaningZero:"No zeros",meaningBlankVoid:"Not possible in format.",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"Abundance of Finding",purpose:"Potential Feature & Needed for Outcome Definition ",encoding:"None"}},
+{feature: {id:"9",date:"None",name:"RESULT_CAT",values:"Positive,Negative",meaningNaNullNone:"nan possibly missing at random",meaningZero:"No zeros",meaningBlankVoid:"Not possible in format.",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"Whether Positive or Negative Finding",purpose:"Potential Feature & Needed for Outcome Definition ",encoding:"None"}},
+]}},
+{subset: {
+id:"8",
+name:"Medications",
+updated:"2019-06-30",
+modality:"TABULAR",
+format:"CSV",
+size:"1098273",
+featureCount:"5",
+parentid:"0",
+covmat:"None",
+modsys:"None",
+purpose:"Historical data on prescribed medications - not neccesarily related to CLL",
+link:"",
+features:[
+{feature: {id:"1",date:"None",name:"pid",values:"0..inf; integer",meaningNaNullNone:"Not possible in format.",meaningZero:"No zeros",meaningBlankVoid:"Not possible in format.",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"Pseudonymized patient identifier",purpose:"Needed to link different cohorts",encoding:"None"}},
+{feature: {id:"2",date:"None",name:"atc_kode",values:"Many;string",meaningNaNullNone:"No NA, NULL, or NONE",meaningZero:"No zeros",meaningBlankVoid:"Not possible in format.",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"Medication Code",purpose:"Potential Feature",encoding:"None"}},
+{feature: {id:"3",date:"None",name:"expdato",values:"DDMMMYYYY",meaningNaNullNone:"No NA, NULL, or NONE",meaningZero:"No zeros",meaningBlankVoid:"Not possible in format.",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"Start of Medication",purpose:"Potential Feature",encoding:"None"}},
+{feature: {id:"4",date:"None",name:"Stryke",values:"1..inf;float",meaningNaNullNone:"nan means unknown",meaningZero:"No zeros",meaningBlankVoid:"Not possible in format.",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"Dosage value",purpose:"Potential Feature",encoding:"None"}},
+{feature: {id:"5",date:"None",name:"Unit",values:"Many;string",meaningNaNullNone:"nan means unknown",meaningZero:"No zeros",meaningBlankVoid:"Not possible in format.",sparsity:"None",mean:"None",std:"None",modality:"None",median:"None",iqr:"None",parents:"None",unit:"None",definition:"Dosage unit",purpose:"Potential Feature",encoding:"None"}},
+]}},
+] })
 
         document.getElementById("emptyHandle").innerHTML += filledHandle;
-    </script>
-    <script src="./js/collapse.js">
-    </script>
-</body>
-
+  </script>
+  <script src="./js/collapse.js">
+  </script>
+ </body>
 </html>
